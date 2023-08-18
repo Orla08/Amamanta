@@ -1,13 +1,19 @@
-import { View, Text, StyleSheet, Image, ScrollView } from 'react-native'
+import { View, Text, StyleSheet, Image, ScrollView, Pressable } from 'react-native'
 import React from 'react'
 const imgIntrouccion = require("../assets/tonykroos.jpg");
+import { AntDesign } from '@expo/vector-icons';
+import Home from './HomeScreen.js';
+import { useNavigation } from "@react-navigation/native";
 
 const BeneficiosLactancia = () => {
+    const xx = useNavigation();
     return (
-
-
         <View style={styles.container}>
             <View style={styles.containerIntroduccion}>
+                <Pressable style={styles.iconoAtras}
+                    onPress={() => { xx.navigate("Home") }}>
+                    <AntDesign name="left" size={24} color="white" />
+                </Pressable>
                 <Text style={styles.txtIntroduccion}>Beneficios de la lactancia</Text>
             </View>
             <ScrollView showsVerticalScrollIndicator={false}>
@@ -115,10 +121,13 @@ const styles = StyleSheet.create({
     },
     containerIntroduccion: {
         backgroundColor: '#ffb6c1',
-        marginHorizontal: 30,
-        marginTop: 50,
-        marginBottom: 25,
-        borderRadius: 10,
+        height: 130,
+        marginBottom: 10,
+        justifyContent: 'center',
+    },
+    iconoAtras: {
+        marginLeft: 10,
+        marginTop: 20
     },
     txtIntroduccion: {
         fontSize: 30,

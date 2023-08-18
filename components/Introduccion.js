@@ -1,14 +1,21 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, Image, ScrollView, Pressable } from 'react-native';
+import { useNavigation } from "@react-navigation/native";
+import { AntDesign } from '@expo/vector-icons';
+import Home from './HomeScreen.js';
 //SafeAreaView solo es en iphone
 
 const imgIntrouccion = require("../assets/tonykroos.jpg");
 
 function Introduccion() {
+    const xx = useNavigation();
     return (
-
         <View style={styles.container}>
             <View style={styles.containerIntroduccion}>
+                <Pressable style={styles.iconoAtras}
+                    onPress={() => { xx.navigate("Home") }}>
+                    <AntDesign name="left" size={24} color="white" />
+                </Pressable>
                 <Text style={styles.txtIntroduccion}>Introducción</Text>
             </View>
             <View>
@@ -41,10 +48,13 @@ const styles = StyleSheet.create({
     },
     containerIntroduccion: {
         backgroundColor: '#ffb6c1',
-        marginHorizontal: 50,
-        marginTop: 50,
+        height: 130,
         marginBottom: 10,
-        borderRadius: 10,
+        justifyContent: 'center',
+    },
+    iconoAtras: {
+        marginLeft: 10,
+        marginTop: 20
     },
     txtIntroduccion: {
         fontSize: 40,

@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image, ImageBackground, Pressable, ScrollView } from 'react-native';
 import { useNavigation } from "@react-navigation/native";
+
 //SafeAreaView solo es en iphone
 
 const imgIntrouccion = require('../assets/home/madre_hijo.jpg')
@@ -30,6 +31,7 @@ export default function Home() {
             <View>
                 <ImageBackground
                     source={imgIntrouccion} style={[styles.imagenprueba,]}>
+                    <Text style={{ color: '#fff' }}>{'<'}</Text>
                     <View style={styles.posicion}>
                         <Text style={styles.txtImagen}>Consejos para dormir el bebé</Text>
                     </View>
@@ -182,7 +184,7 @@ const styles = StyleSheet.create({
         fontSize: 30,
         color: '#fff',
         textAlign: 'center',
-        marginTop: 20,
+        marginTop: 10,
         fontWeight: '600'
     },
     posicion: {

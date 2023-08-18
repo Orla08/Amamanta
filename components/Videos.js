@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, StyleSheet, ImageBackground, Image, ScrollView } from 'react-native'
+import { View, Text, StyleSheet, ImageBackground, Image, ScrollView, Pressable } from 'react-native'
 const imgIntrouccion = require('../assets/home/madre_hijo.jpg')
 import { AntDesign } from '@expo/vector-icons';
 
@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
         fontSize: 30,
         color: '#fff',
         textAlign: 'center',
-        marginTop: 20,
+        marginTop: 10,
         fontWeight: '600'
     },
     posicion: {

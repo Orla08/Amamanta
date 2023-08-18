@@ -493,6 +493,10 @@ const styles = StyleSheet.create({
         marginBottom: 10,
         justifyContent: 'center',
     },
+    iconoAtras: {
+        marginLeft: 10,
+        marginTop: 20
+    },
     txtBienvenida: {
         fontSize: 30,
         color: '#fff',
