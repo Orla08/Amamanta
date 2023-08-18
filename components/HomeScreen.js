@@ -1,9 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image, ImageBackground, Pressable, ScrollView } from 'react-native';
-
+import { useNavigation } from "@react-navigation/native";
 //SafeAreaView solo es en iphone
 
-const imgIntrouccion = require("../assets/tonykroos.jpg");
+const imgIntrouccion = require('../assets/home/madre_hijo.jpg')
 
 const iconIntroduccion = require("../assets/home/introduccion.png")
 const iconTiposDePezon = require("../assets/home/tiposdepezon.png")
@@ -17,18 +17,19 @@ const iconRecurso = require("../assets/home/Recurso25.png")
 const iconPosiciones = require("../assets/home/posiciones.png")
 
 
-// const { navigate } = useNavigate();
+
 
 export default function Home() {
+    const xx = useNavigation();
     return (
         <View style={styles.container}>
-            <View style={[styles.containerIntroduccion, styles.sombra]}>
+            <View style={[styles.containerIntroduccion]}>
                 <Text style={styles.txtBienvenida}>Bienvenida mamá</Text>
             </View>
             {/* Imagen y cards */}
             <View>
                 <ImageBackground
-                    source={imgIntrouccion} style={[styles.imagenprueba, styles.sombra2]}>
+                    source={imgIntrouccion} style={[styles.imagenprueba,]}>
                     <View style={styles.posicion}>
                         <Text style={styles.txtImagen}>Consejos para dormir el bebé</Text>
                     </View>
@@ -40,9 +41,9 @@ export default function Home() {
                     <View style={styles.contenedorCards}>
                         <View>
                             <Pressable
-                            // onPress={() => { navigate("Introduccion") }}
+                                onPress={() => { xx.navigate("Introduccion") }}
                             >
-                                <View style={[styles.containerImg, styles.sombra2]}>
+                                <View style={[styles.containerImg,]}>
                                     <Image
                                         source={iconIntroduccion}
                                         style={styles.imgCards} />
@@ -51,8 +52,9 @@ export default function Home() {
                             </Pressable>
                         </View>
                         <View style={styles.espacioImg}>
-                            <Pressable>
-                                <View style={[styles.containerImg, styles.sombra2]}>
+                            <Pressable
+                                onPress={() => { xx.navigate("LactanciaMaterna") }}>
+                                <View style={[styles.containerImg,]}>
                                     <Image
                                         source={iconLactancia}
                                         style={styles.imgCards} />
@@ -62,8 +64,9 @@ export default function Home() {
                         </View>
                         <View style={styles.espacioImg}>
                             <Pressable
+                                onPress={() => { xx.navigate("LQPETC") }}
                             >
-                                <View style={[styles.containerImg, styles.sombra2]}>
+                                <View style={[styles.containerImg,]}>
                                     <Image
                                         source={iconEnTuCuerpo}
                                         style={styles.imgCards} />
@@ -73,8 +76,9 @@ export default function Home() {
                             </Pressable>
                         </View>
                         <View style={styles.espacioImg}>
-                            <Pressable>
-                                <View style={[styles.containerImg, styles.sombra2]}>
+                            <Pressable
+                                onPress={() => { xx.navigate("BeneficiosLactancia") }}>
+                                <View style={[styles.containerImg,]}>
                                     <Image
                                         source={iconBeneficios}
                                         style={styles.imgCards} />
@@ -84,8 +88,9 @@ export default function Home() {
                             </Pressable>
                         </View>
                         <View style={styles.espacioImg}>
-                            <Pressable>
-                                <View style={[styles.containerImg, styles.sombra2]}>
+                            <Pressable
+                                onPress={() => { xx.navigate("CambiosDeLeche") }}>
+                                <View style={[styles.containerImg,]}>
                                     <Image
                                         source={iconChangeMilk}
                                         style={styles.imgCards} />
@@ -95,9 +100,10 @@ export default function Home() {
                             </Pressable>
                         </View>
                         <View style={styles.espacioImg}>
-                            <Pressable>
+                            <Pressable
+                                onPress={() => { xx.navigate("PosicionesAmamantar") }}>
                                 <View></View>
-                                <View style={[styles.containerImg, styles.sombra2]}>
+                                <View style={[styles.containerImg,]}>
                                     <Image
                                         source={iconPosiciones}
                                         style={styles.imgCards} />
@@ -107,8 +113,9 @@ export default function Home() {
                             </Pressable>
                         </View>
                         <View style={styles.espacioImg}>
-                            <Pressable>
-                                <View style={[styles.containerImg, styles.sombra2]}>
+                            <Pressable
+                                onPress={() => { xx.navigate("TiposDePezon") }}>
+                                <View style={[styles.containerImg,]}>
                                     <Image
                                         source={iconTiposDePezon}
                                         style={styles.imgCards} />
@@ -129,7 +136,7 @@ export default function Home() {
                     <View style={styles.contenedorCards2}>
                         <View >
                             <Pressable>
-                                <View style={[styles.containerImg, styles.sombra2]}>
+                                <View style={[styles.containerImg,]}>
                                     <Image
                                         source={iconCronometro}
                                         style={styles.imgCards} />
@@ -140,7 +147,7 @@ export default function Home() {
                         </View>
                         <View>
                             <Pressable>
-                                <View style={[styles.containerImg, styles.sombra2]}>
+                                <View style={[styles.containerImg,]}>
                                     <Image
                                         source={iconRecordatorio}
                                         style={styles.imgCards}
@@ -167,37 +174,37 @@ const styles = StyleSheet.create({
     },
     containerIntroduccion: {
         backgroundColor: '#ffb6c1',
-        marginLeft: 50,
-        marginRight: 40,
-        marginTop: 60,
+        height: 130,
         marginBottom: 10,
-        borderRadius: 15,
-
+        justifyContent: 'center',
     },
     txtBienvenida: {
         fontSize: 30,
         color: '#fff',
         textAlign: 'center',
+        marginTop: 20,
+        fontWeight: '600'
+    },
+    posicion: {
+        flex: 1,
+        justifyContent: 'flex-end',
+        width: 300,
     },
     txtImagen: {
         color: '#fff',
         textAlign: 'center',
         backgroundColor: '#000',
-        opacity: 0.6,
-        padding: 7,
-        display: 'flex',
+        opacity: 0.5,
+        padding: 6
     },
-    // posicion: {
-    //     flexDirection: 'column',
-    //     alignItems: 'flex-end',
-    // },
     imagenprueba: {
         width: 300,
         height: 200,
-        borderRadius: 20,
         marginHorizontal: 50,
         marginVertical: 30,
+        objectFit: 'fill',
     },
+
     contenedorCards: {
         flexDirection: 'row',
         marginHorizontal: 45
@@ -242,27 +249,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         marginLeft: 50,
         marginRight: 130
-    },
-    sombra: {
-        shadowColor: "black",
-        shadowOpacity: 0.3,
-        shadowOffset: { width: 0, height: 4 },
-        elevation: 6,
-        borderBottomWidth: 3,
-        borderStartWidth: 3,
-        borderEndWidth: 3,
-        borderColor: 'rgba(0,0,0,0.1)',
-    },
-    sombra2: {
-        shadowColor: "black",
-        shadowOpacity: 0.3,
-        shadowOffset: { width: 0, height: 4 },
-        elevation: 7,
-        borderBottomWidth: 5,
-        borderStartWidth: 3,
-        borderEndWidth: 3,
-        borderColor: 'rgba(0,0,0,0.1)',
-    },
+    }
 
 
 })

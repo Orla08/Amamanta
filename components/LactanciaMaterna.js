@@ -1,21 +1,14 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image, ScrollView } from 'react-native';
-//SafeAreaView solo es en iphone
-
+import { View, Text, Image, StyleSheet } from 'react-native'
+import React from 'react'
 const imgIntrouccion = require("../assets/tonykroos.jpg");
 
-function Introduccion() {
-    return (
 
+
+const LactanciaMaterna = () => {
+    return (
         <View style={styles.container}>
             <View style={styles.containerIntroduccion}>
-                <Text style={styles.txtIntroduccion}>Introducción</Text>
-            </View>
-            <View>
-                <Image
-                    style={styles.imagen}
-                    source={imgIntrouccion}
-                />
+                <Text style={styles.txtIntroduccion}>Lactancia Materna</Text>
             </View>
             <View>
                 <Text style={styles.txt_s}>Mamá estas en una etapa, la
@@ -29,10 +22,16 @@ function Introduccion() {
                     como para tu bebé y toda la familia.
                 </Text>
             </View>
+            <View>
+                <Image
+                    style={styles.imagen}
+                    source={imgIntrouccion}
+                />
+            </View>
         </View>
-
-    );
+    )
 }
+
 
 const styles = StyleSheet.create({
     container: {
@@ -43,13 +42,15 @@ const styles = StyleSheet.create({
         backgroundColor: '#ffb6c1',
         marginHorizontal: 50,
         marginTop: 50,
-        marginBottom: 10,
+        marginBottom: 30,
         borderRadius: 10,
     },
     txtIntroduccion: {
-        fontSize: 40,
+        fontSize: 30,
         color: '#fff',
         textAlign: 'center',
+        padding: 5,
+        fontWeight: '600',
     },
     imagen: {
         backgroundColor: '#000',
@@ -68,4 +69,4 @@ const styles = StyleSheet.create({
 
 })
 
-export default Introduccion
+export default LactanciaMaterna

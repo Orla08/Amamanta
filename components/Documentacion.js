@@ -8,9 +8,9 @@ const Documentacion = () => {
 
         <View style={styles.container}>
             <View style={[styles.containerIntroduccion, styles.sombra2]}>
-                <Text style={styles.txtIntroduccion}>Documentacion</Text>
+                <Text style={styles.txtBienvenida}>Documentación</Text>
             </View>
-            <ScrollView>
+            <ScrollView showsVerticalScrollIndicator={false}>
                 <View style={{ marginTop: 10 }}>
                     <View style={styles.contenedoresDeTexto}>
                         <Text style={styles.txtSubtitulos}>CAPITULO 1</Text>
@@ -487,20 +487,18 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#fff',
-    },
-    containerIntroduccion: {
+    }, containerIntroduccion: {
         backgroundColor: '#ffb6c1',
-        marginHorizontal: 50,
-        marginTop: 50,
-        marginBottom: 30,
-        borderRadius: 10,
+        height: 130,
+        marginBottom: 10,
+        justifyContent: 'center',
     },
-    txtIntroduccion: {
-        padding: 5,
+    txtBienvenida: {
         fontSize: 30,
         color: '#fff',
         textAlign: 'center',
-
+        marginTop: 20,
+        fontWeight: '600'
     },
     contenedoresDeTexto: {
         marginHorizontal: 20,
@@ -543,17 +541,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         marginBottom: 15
-    },
-    sombra2: {
-        shadowColor: "black",
-        shadowOpacity: 0.3,
-        shadowOffset: { width: 0, height: 4 },
-        elevation: 7,
-        borderBottomWidth: 5,
-        // borderStartWidth: 3,
-        // borderEndWidth: 3,
-        borderColor: 'rgba(0,0,0,0.1)',
-    },
+    }
 
 })
 
