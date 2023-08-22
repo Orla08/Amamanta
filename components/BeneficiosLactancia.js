@@ -124,17 +124,23 @@ const styles = StyleSheet.create({
         height: 130,
         marginBottom: 10,
         justifyContent: 'center',
+        flexDirection: 'row',
+        display: 'flex',
     },
     iconoAtras: {
-        marginLeft: 10,
-        marginTop: 20
+        marginTop: 20,
+        alignItems: 'flex-start',
+        marginTop:55
     },
     txtIntroduccion: {
         fontSize: 30,
+        fontWeight: '600',
         color: '#fff',
         textAlign: 'center',
-        padding: 5,
-        fontWeight: '600',
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginTop:60,
+        marginHorizontal:10
     },
     imagen: {
         backgroundColor: '#000',

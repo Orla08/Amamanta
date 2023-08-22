@@ -137,7 +137,8 @@ export default function Home() {
                     </View>
                     <View style={styles.contenedorCards2}>
                         <View >
-                            <Pressable>
+                            <Pressable
+                            onPress={() => { xx.navigate("Cronometro") }}>
                                 <View style={[styles.containerImg,]}>
                                     <Image
                                         source={iconCronometro}
@@ -179,12 +180,13 @@ const styles = StyleSheet.create({
         height: 130,
         marginBottom: 10,
         justifyContent: 'center',
+        flexDirection: 'row'
     },
     txtBienvenida: {
         fontSize: 30,
         color: '#fff',
         textAlign: 'center',
-        marginTop: 10,
+        marginTop: 60,
         fontWeight: '600'
     },
     posicion: {

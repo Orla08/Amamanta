@@ -51,15 +51,23 @@ const styles = StyleSheet.create({
         height: 130,
         marginBottom: 10,
         justifyContent: 'center',
+        flexDirection: 'row',
+        display: 'flex',
     },
     iconoAtras: {
-        marginLeft: 10,
-        marginTop: 20
+        marginTop: 20,
+        alignItems: 'flex-start',
+        marginTop:55
     },
     txtIntroduccion: {
-        fontSize: 40,
+        fontSize: 30,
         color: '#fff',
         textAlign: 'center',
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginTop:60,
+        marginHorizontal:80,
+        fontWeight :'600'
     },
     imagen: {
         backgroundColor: '#000',
