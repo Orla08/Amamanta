@@ -28,11 +28,13 @@ const Tab = createBottomTabNavigator();
 
 function TabGroup() {
     return (
-        <Tab.Navigator>
-            <Tab.Screen name="Inicio" component={SatckGroup}
-                options={{ headerShown: false, tabBarIcon: () => <Ionicons name="home" size={24} color="black" />, tabBarShowLabel: false }} />
+        <Tab.Navigator
+            initialRouteName="Inicio"
+        >
             <Tab.Screen name="Videos" component={Videos}
                 options={{ headerShown: false, tabBarIcon: () => <MaterialIcons name="video-collection" size={24} color="black" />, tabBarShowLabel: false }} />
+            <Tab.Screen name="Inicio" component={SatckGroup}
+                options={{ headerShown: false, tabBarIcon: () => <Ionicons name="home" size={24} color="black" />, tabBarShowLabel: false }} />
             <Tab.Screen name="Documentacion" component={Documentacion}
                 options={{ headerShown: false, tabBarIcon: () => <Ionicons name="document" size={24} color="black" />, tabBarShowLabel: false }} />
         </Tab.Navigator>
