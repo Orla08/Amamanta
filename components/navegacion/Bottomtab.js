@@ -17,9 +17,9 @@ import TiposDePezon from "../TiposDePezon.js";
 import Cronometro from "../Cronometro.js";
 
 
- const iconVideos = require('/Users/imac007/Documents/GitHub/Amamanta/assets/iconos/video.png')
-const iconHome = require('/Users/imac007/Documents/GitHub/Amamanta/assets/iconos/casa.png')
-const iconDocumentos= require('/Users/imac007/Documents/GitHub/Amamanta/assets/iconos/documento.png') 
+const iconVideos = require('/Users/imac007/Documents/GitHub/Amamanta/assets/iconos/videos.png')
+const iconHome = require('/Users/imac007/Documents/GitHub/Amamanta/assets/iconos/home.png')
+const iconDocumentos= require('../../assets/iconos/documentos.png') 
 
 
 
@@ -42,20 +42,20 @@ function TabGroup() {
             screenOptions={{ //Opciones de vitsas del tab navigator
                 tabBarActiveTintColor: '#191970' //Cuando se presione por defecto tendra este color
             }}
-        
+            style={{ alignItems: 'center'}}
         >
             <Tab.Screen name="Videos" component={Videos}
                 options={{ headerShown: false, 
                 tabBarShowLabel: false, 
-                tabBarIcon: ({focused}) => (<Image source={iconVideos} style={[{tintColor: focused? '#191970':'#000'},{width:26, height:26}]}/>) }} />
+                tabBarIcon: ({focused}) => (<Image source={iconVideos} style={[{tintColor: focused? '#191970':'#000'},{width:35, height:25}]}/>) }} />
             <Tab.Screen name="Inicio" component={SatckGroup}
                 options={{ headerShown: false, 
                 tabBarShowLabel: false,
-                tabBarIcon: ({focused}) => (<Image source={iconHome} style={[{tintColor: focused? '#191970':'#000'},{width:26, height:30}]}/>) }}/>
+                tabBarIcon: ({focused}) => (<Image source={iconHome} style={[{tintColor: focused? '#191970':'#000'},{width:35, height:32}]}/>) }}/>
             <Tab.Screen name="Documentacion" component={Documentacion}
                 options={{ headerShown: false, 
                 tabBarShowLabel: false,
-                tabBarIcon: ({focused}) => (<Image source={iconDocumentos} style={[{tintColor: focused? '#191970':'#000'},{width:26, height:27}]}/>) }}/>
+                tabBarIcon: ({focused}) => (<Image source={iconDocumentos} style={[{tintColor: focused? '#191970':'#000'},{width:21, height:28}]}/>) }}/>
         </Tab.Navigator>
     )
 }

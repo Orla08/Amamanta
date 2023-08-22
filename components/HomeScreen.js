@@ -1,7 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image, ImageBackground, Pressable, ScrollView } from 'react-native';
 import { useNavigation } from "@react-navigation/native";
-
 //SafeAreaView solo es en iphone
 
 const imgIntrouccion = require('../assets/home/madre_hijo.jpg')
@@ -187,7 +186,8 @@ const styles = StyleSheet.create({
         color: '#fff',
         textAlign: 'center',
         marginTop: 60,
-        fontWeight: '600'
+        fontWeight: '600',
+        fontFamily: 'Roboto'
     },
     posicion: {
         flex: 1,
@@ -199,7 +199,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         backgroundColor: '#000',
         opacity: 0.5,
-        padding: 6
+        padding: 6,
     },
     imagenprueba: {
         width: 300,
@@ -225,7 +225,7 @@ const styles = StyleSheet.create({
         borderRadius: 14,
     },
     imgCards: {
-        width: 75,
+        width: 65,
         height: 70,
         objectFit: 'fill',
     },
@@ -235,6 +235,7 @@ const styles = StyleSheet.create({
     txt2: {
         fontSize: 13,
         textAlign: 'center',
+        fontFamily: 'Roboto'
     },
     txtHerramienta: {
         color: '#FFF',
@@ -246,7 +247,8 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         borderRadius: 20,
         marginVertical: 40,
-        padding: 4
+        padding: 4,
+        fontFamily: 'Roboto'
     },
     contenedorCards2: {
         flexDirection: 'row',

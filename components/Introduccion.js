@@ -67,7 +67,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         marginTop:60,
         marginHorizontal:80,
-        fontWeight :'600'
+        fontWeight :'600',
+        fontFamily: 'Roboto'
     },
     imagen: {
         backgroundColor: '#000',
@@ -82,6 +83,7 @@ const styles = StyleSheet.create({
         marginHorizontal: 50,
         marginBottom: 10,
         textAlign: 'justify',
+        fontFamily: 'Roboto'
     }
 
 })

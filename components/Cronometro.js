@@ -148,7 +148,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         flexDirection: 'row'
     },iconoAtras: {
-        marginTop:60
+        marginTop:65
     },
     txtBienvenida: {
         fontSize: 30,
@@ -156,7 +156,8 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         marginTop: 60,
         fontWeight: '600',
-        marginHorizontal:80
+        marginHorizontal:80,
+        fontFamily: 'Roboto'
     },imagen: {
         width: 250,
         height: 250,
@@ -169,12 +170,14 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: '600',
         color: '#fff',
-        marginLeft:30
+        marginLeft:30,
+        fontFamily: 'Roboto'
     },
     text2:{
         fontSize:20,
          color:'#fff',
-          textAlign:'center', marginBottom:5
+          textAlign:'center', marginBottom:5,
+          fontFamily: 'Roboto'
     },
     containerCuerpo:{
         backgroundColor: '#e6e6fa'
