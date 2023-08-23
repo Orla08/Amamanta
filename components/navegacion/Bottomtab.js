@@ -15,7 +15,7 @@ import PosicionesAmamantar from "../PosicionesAmamantar.js";
 import CambiosDeLeche from "../CambiosDeLeche.js";
 import TiposDePezon from "../TiposDePezon.js";
 import Cronometro from "../Cronometro.js";
-
+import Recordatorio from "../Recordatorio.js";
 
 const iconVideos = require('/Users/imac007/Documents/GitHub/Amamanta/assets/iconos/videos.png')
 const iconHome = require('/Users/imac007/Documents/GitHub/Amamanta/assets/iconos/home.png')
@@ -75,6 +75,7 @@ function SatckGroup() {
             <Stack.Screen name="PosicionesAmamantar" component={PosicionesAmamantar} options={{ headerShown: false }} />
             <Stack.Screen name="TiposDePezon" component={TiposDePezon} options={{ headerShown: false }} />
             <Stack.Screen name="Cronometro" component={Cronometro} options={{ headerShown: false }} />
+            <Stack.Screen name="Recordatorio" component={Recordatorio} options={{ headerShown: false }} />
         </Stack.Navigator>
     )
 }
