@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
     },
     containerIntroduccion: {
-        backgroundColor: '#ffb6c1',
+        backgroundColor: '#ffadc6',
         height: 130,
         marginBottom: 10,
         justifyContent: 'center',
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     iconoAtras: {
         marginTop: 20,
         alignItems: 'flex-start',
-        marginTop:55
+        marginTop:70
     },
     txtIntroduccion: {
         fontSize: 30,

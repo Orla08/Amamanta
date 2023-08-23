@@ -8,12 +8,16 @@ const img = require('../assets/tonykroos.jpg')
 const iconStart = require('../assets/iconos/boton-de-play.png')
 const iconPausa = require('../assets/iconos/pausa.png')
 const iconStop = require('../assets/iconos/boton-detener.png')
+const imgSeno = require('../assets/iconos/seno.png')
 
 const Cronometro = () => {
    const [isRunning, setIsRunning] = useState(false);
   const [resetWatch, setResetWatch] = useState(false);
-  const [isRunning2, setIsRunning2] = useState(false);
-  const [resetWatch2, setResetWatch2] = useState(false);
+
+  const [seno, setSeno] = useState('');
+  const [tiempo, setTiempo] = useState('')
+  /* const [isRunning2, setIsRunning2] = useState(false);
+  const [resetWatch2, setResetWatch2] = useState(false); */
 
   const handleStart = () => {
     setIsRunning(true);
@@ -28,7 +32,7 @@ const Cronometro = () => {
     setIsRunning(false);
     setResetWatch(true);
   };
-  const handleStart2 = () => {
+ /*  const handleStart2 = () => {
     setIsRunning2(true);
     setResetWatch2(false);
   };
@@ -40,7 +44,7 @@ const Cronometro = () => {
   const handleReset2 = () => {
     setIsRunning2(false);
     setResetWatch2(true);
-  };
+  }; */
 
 
 
@@ -55,11 +59,29 @@ const Cronometro = () => {
             </Pressable>
             <Text style={styles.txtBienvenida}>Cronometro</Text>
         </View>
-        <View>
-            <Image
-                style={styles.imagen}
-                source={img}
-            />
+        <View >
+            <Text style={{textAlign: "center", fontSize:25, marginVertical:10}}>Presione el seno con el{'\n'}cual amamantará al niñ@</Text>
+            <View style={styles.containerImg}>
+                <Pressable
+                onPress={() => setSeno('izquierdo')}
+                >
+                    <Image
+                        style={styles.imagen}
+                        source={imgSeno}
+                    />
+                    <Text style={{textAlign: "center", fontSize:23}}>Izquierdo</Text>
+                </Pressable>
+                <Pressable
+                onPress={() => setSeno('derecho')}
+                >
+                    <Image
+                        style={styles.imagen2}
+                        source={imgSeno}
+                    />
+                    <Text style={{textAlign: "center", fontSize:23}}>Derecho</Text>
+                </Pressable>
+            </View>
+            
         </View>
             <View style={styles.containerCuerpo}>
             <Text style={styles.Text}>Lactancia en curso:</Text>
@@ -75,7 +97,7 @@ const Cronometro = () => {
                         text: styles.stopwatchText,
                     }}
                     />
-                    <Text style={styles.text2}>Seno Izquierdo</Text>
+                    <Text style={styles.text2}>Seno {seno}</Text>
                     <View style={styles.buttonContainer}>
                         <Pressable onPress={handleStart} disabled={isRunning}>
                         <Image
@@ -97,7 +119,7 @@ const Cronometro = () => {
                         </Pressable> 
                     </View>
                 </View>
-                <View style={styles.contCards}>
+                {/* <View style={styles.contCards}>
                     <Stopwatch
                     laps
                     msecs
@@ -129,7 +151,7 @@ const Cronometro = () => {
                             />
                         </Pressable>
                     </View>
-                </View>
+                </View> */}
             </View>
         </View>
     </View>
@@ -142,7 +164,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
     },
     containerIntroduccion: {
-        backgroundColor: '#ffb6c1',
+        backgroundColor: '#ffadc6',
         height: 130,
         marginBottom: 10,
         justifyContent: 'center',
@@ -158,12 +180,27 @@ const styles = StyleSheet.create({
         fontWeight: '600',
         marginHorizontal:80,
         fontFamily: 'Roboto'
-    },imagen: {
-        width: 250,
-        height: 250,
+    },
+    containerImg:{
+        flexDirection: 'row',
+        marginHorizontal:20,
+        justifyContent:'space-around'
+    },
+    imagen: {
+        width: 130,
+        height: 150,
         borderRadius: 20,
         marginHorizontal: 90,
         marginVertical: 30,
+        objectFit: 'fill',
+    },imagen2: {
+        width: 130,
+        height: 150,
+        borderRadius: 20,
+        marginHorizontal: 90,
+        marginVertical: 30,
+        transform:[{scaleX:-1}],
+        objectFit: 'fill',
     },
     Text:{
         marginTop:10,
@@ -180,13 +217,14 @@ const styles = StyleSheet.create({
           fontFamily: 'Roboto'
     },
     containerCuerpo:{
-        backgroundColor: '#e6e6fa'
+        backgroundColor: '#e6e6fa',
+        marginTop:40
     },
     contCards:{
         marginVertical:15,
         backgroundColor: '#b8b4d4ec',
         borderRadius:10,
-        padding:5,
+        padding:20,
     },
     stopwatchContainer:{
         marginTop:10,
@@ -194,7 +232,7 @@ const styles = StyleSheet.create({
     }, 
     stopwatchText:{
         color: '#fff',
-        fontSize: 20
+        fontSize: 30
     },
     containerCronometos:{
         flexDirection:'row',
@@ -206,7 +244,8 @@ const styles = StyleSheet.create({
     },
     iconos:{
         width:30,
-        height:30
+        height:30,
+        //color:'#41219f'  este debe ser el color del icono
     }
 })
 

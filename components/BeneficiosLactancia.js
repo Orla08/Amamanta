@@ -14,7 +14,7 @@ const BeneficiosLactancia = () => {
                     onPress={() => { xx.navigate("Home") }}>
                     <AntDesign name="left" size={24} color="white" />
                 </Pressable>
-                <Text style={styles.txtIntroduccion}>Beneficios de la lactancia</Text>
+                <Text style={styles.txtIntroduccion}>Beneficios de la {'\n'} lactancia</Text>
             </View>
             <ScrollView showsVerticalScrollIndicator={false}>
                 <View>
@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
     },
     containerIntroduccion: {
-        backgroundColor: '#ffb6c1',
+        backgroundColor: '#ffadc6',
         height: 130,
         marginBottom: 10,
         justifyContent: 'center',
@@ -130,7 +130,7 @@ const styles = StyleSheet.create({
     iconoAtras: {
         marginTop: 20,
         alignItems: 'flex-start',
-        marginTop:55
+        marginTop:70
     },
     txtIntroduccion: {
         fontSize: 30,
@@ -140,7 +140,10 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         marginTop:60,
-        marginHorizontal:10
+        marginLeft:55,
+        marginRight:65,
+        //marginHorizontal:60,
+        lineHeight:30
     },
     imagen: {
         backgroundColor: '#000',

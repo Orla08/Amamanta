@@ -1,20 +1,23 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image, ImageBackground, Pressable, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, Image, ImageBackground, Pressable, ScrollView, TouchableOpacity } from 'react-native';
 import { useNavigation } from "@react-navigation/native";
+import { AntDesign } from '@expo/vector-icons';
+
+
 //SafeAreaView solo es en iphone
 
 const imgIntrouccion = require('../assets/home/madre_hijo.jpg')
 
-const iconIntroduccion = require("../assets/home/introduccion.png")
-const iconTiposDePezon = require("../assets/home/tiposdepezon.png")
-const iconBeneficios = require("../assets/home/beneficios.png")
-const iconChangeMilk = require("../assets/home/cambios.png")
-const iconCronometro = require("../assets/home/cronometro.png")
-const iconLactancia = require("../assets/home/lactanciaMaterna.png")
-const iconRecordatorio = require("../assets/home/recordatorio.png")
-const iconEnTuCuerpo = require("../assets/home/EntuCuerpo.png")
+const iconIntroduccion = require("../assets/imgHome/introduccion.png")
+const iconTiposDePezon = require("../assets/imgHome/tiposdepezon.png")
+const iconBeneficios = require("../assets/imgHome/beneficios.png")
+const iconChangeMilk = require("../assets/imgHome/cambios.png")
+const iconCronometro = require("../assets/imgHome/cronometro.png")
+const iconLactancia = require("../assets/imgHome/lactanciaMaterna.png")
+const iconRecordatorio = require("../assets/imgHome/recordatorio.png")
+const iconEnTuCuerpo = require("../assets/imgHome/EntuCuerpo.png")
 const iconRecurso = require("../assets/home/Recurso25.png")
-const iconPosiciones = require("../assets/home/posiciones.png")
+const iconPosiciones = require("../assets/imgHome/posiciones.png")
 
 
 
@@ -36,72 +39,75 @@ export default function Home() {
                     </View>
                 </ImageBackground>
 
+                  
                 <ScrollView
                     horizontal={true}
                     showsHorizontalScrollIndicator={false}>
                     <View style={styles.contenedorCards}>
+                    {/*Introduccion  */}
                         <View>
-                            <Pressable
-                                onPress={() => { xx.navigate("Introduccion") }}
-                            >
-                                <View style={[styles.containerImg,]}>
-                                    <Image
-                                        source={iconIntroduccion}
-                                        style={styles.imgCards} />
-                                </View>
-                                <Text style={styles.txt2}>Introduccion</Text>
-                            </Pressable>
+                                <TouchableOpacity
+                                onPress={() => { xx.navigate("Introduccion") }}>
+                                    <View style={[styles.containerImg]}>
+                                        <Image
+                                            source={iconIntroduccion}
+                                            style={styles.imgCards} />
+                                    </View>
+                                    <Text style={styles.txt2}>Introduccion</Text>
+                                </TouchableOpacity>
                         </View>
+                    {/*Lactancia Materna */}
                         <View style={styles.espacioImg}>
-                            <Pressable
+                                <TouchableOpacity
                                 onPress={() => { xx.navigate("LactanciaMaterna") }}>
-                                <View style={[styles.containerImg,]}>
+                                <View style={[styles.containerImg]}>
                                     <Image
                                         source={iconLactancia}
                                         style={styles.imgCards} />
                                 </View>
-                                <Text style={styles.txt2}>Lactancia materna</Text>
-                            </Pressable>
+                                <Text style={styles.txt2}>Lactancia {'\n'}materna</Text>
+                                </TouchableOpacity>
                         </View>
+                    {/*Lo que pasa en tu cuerpo */}
                         <View style={styles.espacioImg}>
-                            <Pressable
+                            <TouchableOpacity
                                 onPress={() => { xx.navigate("LQPETC") }}
                             >
-                                <View style={[styles.containerImg,]}>
+                                <View style={[styles.containerImg]}>
                                     <Image
                                         source={iconEnTuCuerpo}
                                         style={styles.imgCards} />
                                 </View>
-                                <Text style={styles.txt2}>Lo que pasa en</Text>
-                                <Text style={styles.txt2}>tu cuerpo</Text>
-                            </Pressable>
+                                <Text style={styles.txt2}>Lo que pasa {'\n'}en tu cuerpo</Text>
+                            </TouchableOpacity>
                         </View>
+                    {/*Lo que pasa en tu cuerpo */}
                         <View style={styles.espacioImg}>
-                            <Pressable
+                            <TouchableOpacity
                                 onPress={() => { xx.navigate("BeneficiosLactancia") }}>
                                 <View style={[styles.containerImg,]}>
                                     <Image
                                         source={iconBeneficios}
                                         style={styles.imgCards} />
                                 </View>
-                                <Text style={styles.txt2}>Beneficios de</Text>
-                                <Text style={styles.txt2}>la lactancia</Text>
-                            </Pressable>
+                                <Text style={styles.txt2}>Beneficios de {'\n'}de lactancia</Text>
+                            </TouchableOpacity>
                         </View>
+                    {/*Lo que pasa en tu cuerpo */}
                         <View style={styles.espacioImg}>
-                            <Pressable
+                            <TouchableOpacity
                                 onPress={() => { xx.navigate("CambiosDeLeche") }}>
                                 <View style={[styles.containerImg,]}>
                                     <Image
                                         source={iconChangeMilk}
                                         style={styles.imgCards} />
                                 </View>
-                                <Text style={styles.txt2}>Cambios de leche</Text>
-                                <Text style={styles.txt2}>tu cuerpo</Text>
-                            </Pressable>
+                                <Text style={styles.txt2}>Cambios de leche{'\n'}en tu cuerpo</Text>
+                            </TouchableOpacity>
                         </View>
+                    {/*Lo que pasa en tu cuerpo */}
                         <View style={styles.espacioImg}>
-                            <Pressable
+                            <TouchableOpacity
                                 onPress={() => { xx.navigate("PosicionesAmamantar") }}>
                                 <View></View>
                                 <View style={[styles.containerImg,]}>
@@ -109,55 +115,59 @@ export default function Home() {
                                         source={iconPosiciones}
                                         style={styles.imgCards} />
                                 </View>
-                                <Text style={styles.txt2}>Posiciones para</Text>
-                                <Text style={styles.txt2}>amamantar</Text>
-                            </Pressable>
+                                <Text style={styles.txt2}>Posiciones para {'\n'}amamantar</Text>                                
+                            </TouchableOpacity>
                         </View>
+                    {/*Lo que pasa en tu cuerpo */}
                         <View style={styles.espacioImg}>
-                            <Pressable
+                            <TouchableOpacity
                                 onPress={() => { xx.navigate("TiposDePezon") }}>
                                 <View style={[styles.containerImg,]}>
                                     <Image
                                         source={iconTiposDePezon}
                                         style={styles.imgCards} />
                                 </View>
-                                <Text style={styles.txt2}>Tipo de</Text>
-                                <Text style={styles.txt2}>pezon</Text>
-                            </Pressable>
+                                <Text style={styles.txt2}>Tipo de {'\n'}pezon</Text>
+                            </TouchableOpacity>
                         </View>
                     </View>
                 </ScrollView>
+                <View style={styles.contenedorFila}>
+                    <AntDesign name="arrowleft" size={20} color='#fff'/>
+                </View> 
+                <View style={styles.contenedorFila2}>
+                    <AntDesign name="arrowright" size={20} color='#fff'/>
+                </View>
+                
 
 
                 {/* Herramientas */}
                 <View style={styles.contenedorHerramientas}>
-                    <View>
+                    <View style = {styles.ContainTxtHerr}>
                         <Text style={styles.txtHerramienta}>Herramientas</Text>
                     </View>
                     <View style={styles.contenedorCards2}>
                         <View >
-                            <Pressable
+                            <TouchableOpacity
                             onPress={() => { xx.navigate("Cronometro") }}>
                                 <View style={[styles.containerImg,]}>
                                     <Image
                                         source={iconCronometro}
-                                        style={styles.imgCards} />
+                                        style={styles.imgCards2} />
                                 </View>
-                                <Text style={styles.txt2}>Cronometro</Text>
-                                <Text style={styles.txt2}>de lactancia</Text>
-                            </Pressable>
+                                <Text style={styles.txt2}>Cronometro {'\n'} de lactancia</Text>
+                            </TouchableOpacity>
                         </View>
                         <View>
-                            <Pressable>
+                            <TouchableOpacity>
                                 <View style={[styles.containerImg,]}>
                                     <Image
                                         source={iconRecordatorio}
-                                        style={styles.imgCards}
+                                        style={styles.imgCards2}
                                     />
                                 </View>
-                                <Text style={styles.txt2}>Recordatorio</Text>
-                                <Text style={styles.txt2}>de lactancia</Text>
-                            </Pressable>
+                                <Text style={styles.txt2}>Recordatorio {'\n'}de lactancia</Text>
+                            </TouchableOpacity>
                         </View>
                     </View>
                 </View>
@@ -175,7 +185,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
     },
     containerIntroduccion: {
-        backgroundColor: '#ffb6c1',
+        backgroundColor: '#ffadc6',
         height: 130,
         marginBottom: 10,
         justifyContent: 'center',
@@ -186,8 +196,20 @@ const styles = StyleSheet.create({
         color: '#fff',
         textAlign: 'center',
         marginTop: 60,
-        fontWeight: '600',
+        fontWeight: '700',
         fontFamily: 'Roboto'
+    },
+    contenedorFila:{
+        position: 'absolute',
+        left: 22,
+        top: '50%',
+        transform: [{ translateY: -12 }],
+    },
+    contenedorFila2:{
+        position: 'absolute',
+        right: 22,
+        top: '50%',
+        transform: [{ translateY: -12 }],
     },
     posicion: {
         flex: 1,
@@ -211,42 +233,54 @@ const styles = StyleSheet.create({
 
     contenedorCards: {
         flexDirection: 'row',
-        marginHorizontal: 45
+        marginHorizontal: 48
     },
     espacioImg: {
-        marginLeft: 13
+        marginLeft: 14,
+        //width: 100,
+        //height: 105,
     },
     containerImg: {
-        backgroundColor: '#ffc0cb',
-        width: 100,
-        height: 90,
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderRadius: 14,
+        //width: 100,
+        //height: 90,
+        //justifyContent: 'center',
+        //alignItems: 'center',
+        //borderRadius: 19,
     },
     imgCards: {
-        width: 65,
-        height: 70,
+        width: 100,
+        height: 90,
+        objectFit: 'fill',
+    },
+    imgCards2: {
+        width: 95,
+        height: 88,
         objectFit: 'fill',
     },
     imgMedio: {
         // marginLeft: 8
     },
     txt2: {
-        fontSize: 13,
+        marginTop:3,
+        fontSize: 12,
         textAlign: 'center',
-        fontFamily: 'Roboto'
+        fontFamily: 'Roboto',
+        lineHeight:12
+    },
+    ContainTxtHerr:{
+        backgroundColor: '#ffadc6',
+        marginRight: 200,
+        marginLeft: 50,
+        borderRadius: 20,
+        marginTop:28,
+        marginBottom: 40,
     },
     txtHerramienta: {
         color: '#FFF',
-        backgroundColor: '#ffb6c1',
         fontSize: 20,
         fontWeight: '600',
-        marginRight: 200,
-        marginLeft: 50,
         textAlign: 'center',
-        borderRadius: 20,
-        marginVertical: 40,
+        
         padding: 4,
         fontFamily: 'Roboto'
     },

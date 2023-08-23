@@ -57,17 +57,19 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
     },
     containerIntroduccion: {
-        backgroundColor: '#ffb6c1',
+        backgroundColor: '#ffadc6',
         height: 130,
         marginBottom: 10,
         justifyContent: 'center',
+        flexDirection: 'row'
     },
     txtBienvenida: {
         fontSize: 30,
         color: '#fff',
         textAlign: 'center',
-        marginTop: 10,
-        fontWeight: '600'
+        marginTop: 60,
+        fontWeight: '700',
+        fontFamily: 'Roboto'
     },
     posicion: {
         flex: 1,

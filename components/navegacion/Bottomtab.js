@@ -47,15 +47,15 @@ function TabGroup() {
             <Tab.Screen name="Videos" component={Videos}
                 options={{ headerShown: false, 
                 tabBarShowLabel: false, 
-                tabBarIcon: ({focused}) => (<Image source={iconVideos} style={[{tintColor: focused? '#191970':'#000'},{width:35, height:25}]}/>) }} />
+                tabBarIcon: ({focused}) => (<Image source={iconVideos} style={[{tintColor: focused? '#fbc0d1':'#41219f'},{width:34, height:24}]}/>) }} />
             <Tab.Screen name="Inicio" component={SatckGroup}
                 options={{ headerShown: false, 
                 tabBarShowLabel: false,
-                tabBarIcon: ({focused}) => (<Image source={iconHome} style={[{tintColor: focused? '#191970':'#000'},{width:35, height:32}]}/>) }}/>
+                tabBarIcon: ({focused}) => (<Image source={iconHome} style={[{tintColor: focused? '#fbc0d1':'#41219f'},{width:33, height:30}]}/>) }}/>
             <Tab.Screen name="Documentacion" component={Documentacion}
                 options={{ headerShown: false, 
                 tabBarShowLabel: false,
-                tabBarIcon: ({focused}) => (<Image source={iconDocumentos} style={[{tintColor: focused? '#191970':'#000'},{width:21, height:28}]}/>) }}/>
+                tabBarIcon: ({focused}) => (<Image source={iconDocumentos} style={[{tintColor: focused? '#fbc0d1':'#41219f'},{width:21, height:29}]}/>) }}/>
         </Tab.Navigator>
     )
 }

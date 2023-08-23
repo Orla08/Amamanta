@@ -488,21 +488,19 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#fff',
     }, containerIntroduccion: {
-        backgroundColor: '#ffb6c1',
+        backgroundColor: '#ffadc6',
         height: 130,
         marginBottom: 10,
         justifyContent: 'center',
-    },
-    iconoAtras: {
-        marginLeft: 10,
-        marginTop: 20
+        flexDirection: 'row'
     },
     txtBienvenida: {
         fontSize: 30,
         color: '#fff',
         textAlign: 'center',
-        marginTop: 20,
-        fontWeight: '600'
+        marginTop: 60,
+        fontWeight: '700',
+        fontFamily: 'Roboto'
     },
     contenedoresDeTexto: {
         marginHorizontal: 20,

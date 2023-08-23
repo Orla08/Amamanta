@@ -14,7 +14,7 @@ const LQPETC = () => {
                     onPress={() => { xx.navigate("Home") }}>
                     <AntDesign name="left" size={24} color="white" />
                 </Pressable>
-                <Text style={styles.txtIntroduccion}>Lo que pasa en tu cuerpo</Text>
+                <Text style={styles.txtIntroduccion}>Lo que pasa en {'\n'}tu cuerpo</Text>
             </View>
             <ScrollView showsVerticalScrollIndicator={false}>
                 <View>
@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
     },
     containerIntroduccion: {
-        backgroundColor: '#ffb6c1',
+        backgroundColor: '#ffadc6',
         height: 130,
         marginBottom: 10,
         justifyContent: 'center',
@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
     iconoAtras: {
         marginTop: 20,
         alignItems: 'flex-start',
-        marginTop:55
+        marginTop:70
     },
     txtIntroduccion: {
         fontSize: 30,
@@ -103,7 +103,9 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         marginTop:60,
-        marginHorizontal:10
+        marginLeft:58,
+        marginRight:65,
+        lineHeight:28
     },
     imagen: {
         backgroundColor: '#000',
