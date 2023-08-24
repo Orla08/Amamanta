@@ -16,6 +16,7 @@ import CambiosDeLeche from "../CambiosDeLeche.js";
 import TiposDePezon from "../TiposDePezon.js";
 import Cronometro from "../Cronometro.js";
 import Recordatorio from "../Recordatorio.js";
+import Login from "../Login.js";
 
 const iconVideos = require('/Users/imac007/Documents/GitHub/Amamanta/assets/iconos/videos.png')
 const iconHome = require('/Users/imac007/Documents/GitHub/Amamanta/assets/iconos/home.png')
@@ -48,10 +49,12 @@ function TabGroup() {
                 options={{ headerShown: false, 
                 tabBarShowLabel: false, 
                 tabBarIcon: ({focused}) => (<Image source={iconVideos} style={[{tintColor: focused? '#fbc0d1':'#41219f'},{width:34, height:24}]}/>) }} />
+            
             <Tab.Screen name="Inicio" component={SatckGroup}
                 options={{ headerShown: false, 
                 tabBarShowLabel: false,
                 tabBarIcon: ({focused}) => (<Image source={iconHome} style={[{tintColor: focused? '#fbc0d1':'#41219f'},{width:33, height:30}]}/>) }}/>
+            
             <Tab.Screen name="Documentacion" component={Documentacion}
                 options={{ headerShown: false, 
                 tabBarShowLabel: false,
@@ -76,6 +79,7 @@ function SatckGroup() {
             <Stack.Screen name="TiposDePezon" component={TiposDePezon} options={{ headerShown: false }} />
             <Stack.Screen name="Cronometro" component={Cronometro} options={{ headerShown: false }} />
             <Stack.Screen name="Recordatorio" component={Recordatorio} options={{ headerShown: false }} />
+            <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
         </Stack.Navigator>
     )
 }
