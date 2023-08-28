@@ -170,6 +170,18 @@ export default function Home() {
                                 <Text style={styles.txt2}>Recordatorio {'\n'}de lactancia</Text>
                             </TouchableOpacity>
                         </View>
+                        <View>
+                            <TouchableOpacity
+                            onPress={() => { xx.navigate("cronometroPrueba") }}>
+                                <View style={[styles.containerImg,]}>
+                                    <Image
+                                        source={iconRecordatorio}
+                                        style={styles.imgCards2}
+                                    />
+                                </View>
+                                <Text style={styles.txt2}>Cronometro</Text>
+                            </TouchableOpacity>
+                        </View>
                     </View>
                 </View>
             </View>
@@ -288,9 +300,9 @@ const styles = StyleSheet.create({
     contenedorCards2: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-       marginLeft: 50,
-        marginRight: 130
-        //marginHorizontal:45
+       //marginLeft: 50,
+        //marginRight: 130
+        marginHorizontal:45
     }
 
 

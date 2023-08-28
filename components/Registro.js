@@ -11,11 +11,12 @@ const icoContrasena = require('../assets/iconos/iconContrasena.png');
 const Login = () => {
 
     const [nombre, setNombre] = useState('')
-    const [edad, setEdad] = useState('')
-    const [email, setEmail] = useState(0)
+    const [edad, setEdad] = useState(0)
+    const [email, setEmail] = useState('')
     const [contrasena, setContrasena] = useState('')
     const [ok, setOk] = useState(false)
     const [enviar, setEnviar] = useState(false) 
+    const [contra2, setContra2] = useState('');
 
     const autenticacion = async () => { //Declara una función asíncrona llamada 
         try {//Es un bloque try...catch, que maneja los errores que puedan ocurrir durante la ejecución de la función.
@@ -27,7 +28,17 @@ const Login = () => {
                 email: email,
                 contrasena: contrasena
             })
-            console.log(response.data.users); // Muestra la respuesta del servidor
+            //console.log(response.data); // Muestra la respuesta del servidor
+
+          
+            console.log(response.data.users.edad);
+            console.log(response.data.edad);
+
+            /* const {nombre, edad, email, contrasena} = response.data.users;
+            if(email == setEmail){
+                console.log("El email existe bebe")
+            } */
+            setOk(true)
         } catch (error) { 
             console.error(error);//catch (error) { console.error(error) }: Si ocurre un error durante la solicitud, captura el error y lo muestra en la consola.
         } finally {
@@ -38,20 +49,19 @@ const Login = () => {
     const showAlert = () => 
         Alert.alert(
             'REGISTRO',
-            'Confirmacion De Datos',
+            'Esta seguro que los datos proporcionados son los correctos?',
             [
               {
-                text: 'Cancel',
+                text: 'Cancelar',
                 onPress: () => Alert.alert('Se cancelo su registro'),
                 style: 'cancel',
               },
               {
                 text: 'OK', onPress: () => {
-                    setEnviar(true)
-                    if(enviar){
                         autenticacion()
                         xx.navigate("Login")
-                    }
+                        
+                    
                     console.log('Registro Exitoso')
                     }
                 }

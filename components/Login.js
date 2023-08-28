@@ -6,7 +6,7 @@ import { useNavigation } from '@react-navigation/native';
 
 
 const Login2 = () => {
-
+    const [id, setId] = useState(0);
     const [email, setEmail] = useState('');
     const [contrasena, setContrasena] = useState('');
     const [enviar, setEnviar] = useState(false) 
@@ -34,6 +34,7 @@ const Login2 = () => {
    const autenticacion = async () => {
     try {
         const response = await axios.post("http://10.1.82.216/php/login.php", {
+            id: id,
             email: email,
             contrasena: contrasena
         });
@@ -41,6 +42,7 @@ const Login2 = () => {
         if (response.data.result === "success") {
             const userData = response.data; // Aquí están todos los datos del usuario
             console.log(userData);
+            setId(userData.identificacion) //Aqui modifico el setId le asigno lo que obtengo de la api
             await AsyncStorage.setItem("token", "70");
             xx.navigate('Home');
         } else {
@@ -51,6 +53,7 @@ const Login2 = () => {
     }
 };
     
+
 
 
 
@@ -110,3 +113,4 @@ const styles = StyleSheet.create({
 })
 
 export default Login2
+ 

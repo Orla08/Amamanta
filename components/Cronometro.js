@@ -3,6 +3,9 @@ import React, { useEffect, useState } from 'react'
 import { AntDesign } from '@expo/vector-icons';
 import { Stopwatch } from 'react-native-stopwatch-timer';
 import { useNavigation } from '@react-navigation/native';
+import Login from './Login';
+
+
 
 const img = require('../assets/tonykroos.jpg')
 const iconStart = require('../assets/iconos/boton-de-play.png')
@@ -13,25 +16,90 @@ const imgSeno = require('../assets/iconos/seno.png')
 const Cronometro = () => {
    const [isRunning, setIsRunning] = useState(false);
   const [resetWatch, setResetWatch] = useState(false);
+  const [tiempo, setTiempo] = useState(0)
+  const [minutos, setMinutos] = useState(0);
+  const[horas, setHoras] = useState(0);
 
+  const [id2, setId2] = useState(0);
   const [seno, setSeno] = useState('');
-  const [tiempo, setTiempo] = useState('')
+  const [comentario, setComentario] = useState('');
   /* const [isRunning2, setIsRunning2] = useState(false);
   const [resetWatch2, setResetWatch2] = useState(false); */
 
-  const handleStart = () => {
-    setIsRunning(true);
-    setResetWatch(false);
-  };
 
-  const handleStop = () => {
-    setIsRunning(false);
+  useEffect(() => {
+    let interval;
+
+    if (isRunning) {
+      interval = setInterval(() => {
+        setTiempo(prevTiempo => prevTiempo + 1); //Aqui se incrementa en uno cada vez que pase un segundo
+      }, 1000);
+    } else {
+      clearInterval(interval);
+    }  return () => clearInterval(interval);
+  }, [isRunning]);
+
+
+  /* useEffect(() => {
+    let interval;
+
+    if (isRunning) {
+      interval = setInterval(() => {
+        setTiempo(prevTiempo => {
+            if(prevTiempo + 1 == 60){
+                setMinutos = minutos + 1;
+                return 0;
+            }
+        })
+       }, 1000);
+    } else {
+      clearInterval(interval);
+    }  return () => clearInterval(interval);
+  }, [isRunning]); */
+
+  useEffect(() => {
+    let interval;
+
+    if (isRunning) {
+      interval = setInterval(() => {
+        setMinutos(prevTiempo => prevTiempo + 1); //Aqui se incrementa en uno cada vez que pase un segundo
+      }, 60500);
+    } else {
+      clearInterval(interval);
+    }  return () => clearInterval(interval);
+  }, [isRunning]);
+    
+
+/*   setMinutos(()=>{
+    if(tiempo==60){
+        minutos = minutos+1
+        setTiempo(0)
+    }
+  })
+  setHoras(()=>{
+    if(minutos==60){
+        horas = horas+1
+        setMinutos(0)
+    }
+  }) */
+
+
+  const handleStart = () => {
+    setIsRunning(!isRunning);
+    setResetWatch(false);
   };
 
   const handleReset = () => {
     setIsRunning(false);
     setResetWatch(true);
+    setTiempo(0)
+    setMinutos(0)
   };
+
+   
+  
+
+
  /*  const handleStart2 = () => {
     setIsRunning2(true);
     setResetWatch2(false);
@@ -46,7 +114,27 @@ const Cronometro = () => {
     setResetWatch2(true);
   }; */
 
-
+  const ingresoDatos = async () => {
+    try {
+        const response = await axios.post("http://10.1.82.216/php/login.php", {
+            id: id2,
+            seno :seno,
+            tiempo: tiempo,
+        });
+        console.log(response.data); // Verificar la respuesta del servidor en la consola
+        if (response.data.result === "success") {
+            const userData = response.data; // Aquí están todos los datos del usuario
+            console.log(userData);
+            setId2(userData.identificacion)
+            await AsyncStorage.setItem("token", "70");
+            xx.navigate('Home');
+        } else {
+            alert("Credenciales incorrectas");
+        }
+    } catch (error) {
+        console.error(error);
+    }
+};
 
 
   const xx = useNavigation();
@@ -99,18 +187,19 @@ const Cronometro = () => {
                     />
                     <Text style={styles.text2}>Seno {seno}</Text>
                     <View style={styles.buttonContainer}>
-                        <Pressable onPress={handleStart} disabled={isRunning}>
+                        <Pressable onPress={handleStart}>
                         <Image
                                 source={iconStart}
                                 style={styles.iconos}
                             />
                         </Pressable> 
-                        <Pressable onPress={handleStop} disabled={!isRunning}>
+                        {/* <Pressable onPress={console.log(tiempo)}>
                         <Image
                                 source={iconPausa}
                                 style={styles.iconos}
-                            />
-                        </Pressable> 
+                            /> 
+                        </Pressable>*/}
+                        <Text> {horas} hrs {minutos} min {tiempo} sg</Text> 
                         <Pressable onPress={handleReset}>
                         <Image
                                 source={iconStop}
