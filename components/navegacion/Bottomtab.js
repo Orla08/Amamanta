@@ -16,8 +16,8 @@ import CambiosDeLeche from "../CambiosDeLeche.js";
 import TiposDePezon from "../TiposDePezon.js";
 import Cronometro from "../Cronometro.js";
 import Recordatorio from "../Recordatorio.js";
-import Login2 from "../Login2.js";
 import Login from "../Login.js";
+import Registro from "../Registro.js";
 
 const iconVideos = require('/Users/imac007/Documents/GitHub/Amamanta/assets/iconos/videos.png')
 const iconHome = require('/Users/imac007/Documents/GitHub/Amamanta/assets/iconos/home.png')
@@ -70,7 +70,7 @@ const Stack = createNativeStackNavigator();
 function SatckGroup() {
     return (
         <Stack.Navigator>
-            <Stack.Screen name="Login2" component={Login2} options={{ headerShown: false }} />
+            <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
             <Stack.Screen name="Home" component={Home} options={{ headerShown: false }} />
             <Stack.Screen name="Introduccion" component={Introduccion} options={{ headerShown: false }} />
             <Stack.Screen name="LactanciaMaterna" component={LactanciaMaterna} options={{ headerShown: false }} />
@@ -81,7 +81,7 @@ function SatckGroup() {
             <Stack.Screen name="TiposDePezon" component={TiposDePezon} options={{ headerShown: false }} />
             <Stack.Screen name="Cronometro" component={Cronometro} options={{ headerShown: false }} />
             <Stack.Screen name="Recordatorio" component={Recordatorio} options={{ headerShown: false }} />
-            <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
+            <Stack.Screen name="Registro" component={Registro} options={{ headerShown: false }} />
             
         </Stack.Navigator>
     )
