@@ -1,8 +1,11 @@
-import { View, Text, StyleSheet, Pressable, Image, Button} from 'react-native'
+import { View, Text, StyleSheet, Pressable, ScrollView, Image, Button, TouchableOpacity} from 'react-native'
+import AsyncStorage from '@react-native-async-storage/async-storage'; 
 import React, { useEffect, useState } from 'react'
 import { AntDesign } from '@expo/vector-icons';
 import { Stopwatch } from 'react-native-stopwatch-timer';
 import { useNavigation } from '@react-navigation/native';
+import axios from 'axios'
+import * as Font from 'expo-font' 
 import Login from './Login';
 
 
@@ -11,21 +14,38 @@ const img = require('../assets/tonykroos.jpg')
 const iconStart = require('../assets/iconos/boton-de-play.png')
 const iconPausa = require('../assets/iconos/pausa.png')
 const iconStop = require('../assets/iconos/boton-detener.png')
-const imgSeno = require('../assets/iconos/seno.png')
+const imgSenoIzquier = require('../assets/iconos/senIzquierdo.png')
+const imgSenoDerecho = require('../assets/iconos/senDerecho.png')
 
 const Cronometro = () => {
    const [isRunning, setIsRunning] = useState(false);
   const [resetWatch, setResetWatch] = useState(false);
+  const [activo, setActivo] = useState(false);
   const [tiempo, setTiempo] = useState(0)
   const [minutos, setMinutos] = useState(0);
   const[horas, setHoras] = useState(0);
-
-  const [id2, setId2] = useState(0);
+  const [tiempo2, setTiempo2] = useState('')
+  const [identificacion, setId] = useState('');
   const [seno, setSeno] = useState('');
   const [comentario, setComentario] = useState('');
   /* const [isRunning2, setIsRunning2] = useState(false);
   const [resetWatch2, setResetWatch2] = useState(false); */
 
+  const getDatosSesion = async () => { //En esta funcion asincrona obtenemos la identificacion
+    try {
+      const id = await AsyncStorage.getItem('identificacion');
+      setId(id || ''); //Y se la seteamos a el state de ID para que cuando se ejecute la funcion de ingreso de datos ya tenga el id que se necesita enviar
+    } catch (error) {
+      console.log(error);
+    }
+  }; 
+
+  useEffect(() => {
+    getDatosSesion();  //Aqui se ejecuta la funcion de inmediato sin mirar las demas
+  }, []);
+
+
+    
 
   useEffect(() => {
     let interval;
@@ -33,29 +53,13 @@ const Cronometro = () => {
     if (isRunning) {
       interval = setInterval(() => {
         setTiempo(prevTiempo => prevTiempo + 1); //Aqui se incrementa en uno cada vez que pase un segundo
-      }, 1000);
+        setTiempo2(minutos +":"+tiempo);
+    }, 1000);
     } else {
       clearInterval(interval);
     }  return () => clearInterval(interval);
   }, [isRunning]);
 
-
-  /* useEffect(() => {
-    let interval;
-
-    if (isRunning) {
-      interval = setInterval(() => {
-        setTiempo(prevTiempo => {
-            if(prevTiempo + 1 == 60){
-                setMinutos = minutos + 1;
-                return 0;
-            }
-        })
-       }, 1000);
-    } else {
-      clearInterval(interval);
-    }  return () => clearInterval(interval);
-  }, [isRunning]); */
 
   useEffect(() => {
     let interval;
@@ -63,30 +67,18 @@ const Cronometro = () => {
     if (isRunning) {
       interval = setInterval(() => {
         setMinutos(prevTiempo => prevTiempo + 1); //Aqui se incrementa en uno cada vez que pase un segundo
-      }, 60500);
+        
+    }, 60500);
     } else {
       clearInterval(interval);
     }  return () => clearInterval(interval);
   }, [isRunning]);
-    
-
-/*   setMinutos(()=>{
-    if(tiempo==60){
-        minutos = minutos+1
-        setTiempo(0)
-    }
-  })
-  setHoras(()=>{
-    if(minutos==60){
-        horas = horas+1
-        setMinutos(0)
-    }
-  }) */
 
 
   const handleStart = () => {
     setIsRunning(!isRunning);
     setResetWatch(false);
+    setActivo(!activo);
   };
 
   const handleReset = () => {
@@ -94,51 +86,48 @@ const Cronometro = () => {
     setResetWatch(true);
     setTiempo(0)
     setMinutos(0)
+    setActivo(!activo)
   };
 
    
+  /* const handleStop2 = () => {
+    setIsRunning2(false);
+  }; */
   
 
-
- /*  const handleStart2 = () => {
-    setIsRunning2(true);
-    setResetWatch2(false);
-  };
-
-  const handleStop2 = () => {
-    setIsRunning2(false);
-  };
-
-  const handleReset2 = () => {
-    setIsRunning2(false);
-    setResetWatch2(true);
-  }; */
-
   const ingresoDatos = async () => {
+    
     try {
-        const response = await axios.post("http://10.1.82.216/php/login.php", {
-            id: id2,
-            seno :seno,
-            tiempo: tiempo,
+        const response = await axios.post("http://10.1.80.100/php/data.php", {
+            seno: seno,
+/*             tiempo: tiempoAmamantando, */
+            comentario: comentario,
+            idUser: identificacion,
         });
-        console.log(response.data); // Verificar la respuesta del servidor en la consola
-        if (response.data.result === "success") {
-            const userData = response.data; // Aquí están todos los datos del usuario
-            console.log(userData);
-            setId2(userData.identificacion)
-            await AsyncStorage.setItem("token", "70");
-            xx.navigate('Home');
+        //console.log(response.data); // Verificar la respuesta del servidor en la consola
+         if (response.data.result === "success") {
+            const respuestaPhp = response.data; // Aquí están todos los datos del usuario
+            console.log(respuestaPhp); 
         } else {
-            alert("Credenciales incorrectas");
+            console.log("Error del try");
         }
     } catch (error) {
-        console.error(error);
+        console.log(error);
+        /* console.log(seno);
+        console.log(id2);
+        console.log(id);
+        console.log(comentario);
+        console.error(error); */
     }
 };
+ 
 
 
   const xx = useNavigation();
   return (
+
+    <ScrollView>
+
     <View style={styles.container}>
         <View style={styles.containerIntroduccion}>
             <Pressable style={styles.iconoAtras}
@@ -150,24 +139,40 @@ const Cronometro = () => {
         <View >
             <Text style={{textAlign: "center", fontSize:25, marginVertical:10}}>Presione el seno con el{'\n'}cual amamantará al niñ@</Text>
             <View style={styles.containerImg}>
-                <Pressable
-                onPress={() => setSeno('izquierdo')}
-                >
-                    <Image
-                        style={styles.imagen}
-                        source={imgSeno}
-                    />
-                    <Text style={{textAlign: "center", fontSize:23}}>Izquierdo</Text>
-                </Pressable>
-                <Pressable
-                onPress={() => setSeno('derecho')}
-                >
-                    <Image
-                        style={styles.imagen2}
-                        source={imgSeno}
-                    />
-                    <Text style={{textAlign: "center", fontSize:23}}>Derecho</Text>
-                </Pressable>
+                <View>
+                    <TouchableOpacity
+                    onPress={() => {
+                        setSeno('izquierdo')
+                        handleStart()
+                            }
+                         }
+                    style={[{paddingLeft:57}]}
+                    >
+                        <Image
+                            style={styles.imagen}
+                            source={imgSenoIzquier}
+                        />
+                        <Text style={{textAlign: "center", fontSize:23}}>Izquierdo</Text>
+                    </TouchableOpacity>
+                </View>
+                <View>
+                    <TouchableOpacity
+                    onPress={() => {
+                        setSeno('derecho')
+                        handleStart()
+                            }
+                         }
+                    style={[{paddingRight:57}]}
+                    >
+                        <Image
+                            style={styles.imagen2}
+                            source={imgSenoDerecho}
+                        />
+                        <Text style={{textAlign: "center", fontSize:23}}>Derecho</Text>
+                    </TouchableOpacity>
+                </View>
+                
+                
             </View>
             
         </View>
@@ -175,6 +180,7 @@ const Cronometro = () => {
             <Text style={styles.Text}>Lactancia en curso:</Text>
             <View style={styles.containerCronometos}>
                 <View style={styles.contCards}>
+                <Text style={styles.text2}>{activo && isRunning? "Lactando en el seno " + seno : ""}</Text>
                     <Stopwatch
                     laps
                     msecs
@@ -185,7 +191,7 @@ const Cronometro = () => {
                         text: styles.stopwatchText,
                     }}
                     />
-                    <Text style={styles.text2}>Seno {seno}</Text>
+                    
                     <View style={styles.buttonContainer}>
                         <Pressable onPress={handleStart}>
                         <Image
@@ -199,7 +205,8 @@ const Cronometro = () => {
                                 style={styles.iconos}
                             /> 
                         </Pressable>*/}
-                        <Text> {horas} hrs {minutos} min {tiempo} sg</Text> 
+                        
+                        {/* <Text>{tiempo2}</Text>  */}
                         <Pressable onPress={handleReset}>
                         <Image
                                 source={iconStop}
@@ -208,42 +215,19 @@ const Cronometro = () => {
                         </Pressable> 
                     </View>
                 </View>
-                {/* <View style={styles.contCards}>
-                    <Stopwatch
-                    laps
-                    msecs
-                    start={isRunning2}
-                    reset={resetWatch2}
-                    options={{
-                        container: styles.stopwatchContainer,
-                        text: styles.stopwatchText,
-                    }}
-                    />
-                    <Text style={styles.text2}>Seno Derecho</Text>
-                    <View style={styles.buttonContainer}>
-                        <Pressable onPress={handleStart2} disabled={isRunning2}>
-                            <Image
-                                source={iconStart}
-                                style={styles.iconos}
-                            />
-                        </Pressable>
-                        <Pressable title="Parar-D" onPress={handleStop2} disabled={!isRunning2} >
-                        <Image
-                                source={iconPausa}
-                                style={styles.iconos}
-                            />
-                        </Pressable>
-                        <Pressable title="Reiniciar-D" onPress={handleReset2}>
-                        <Image
-                                source={iconStop}
-                                style={styles.iconos}
-                            />
-                        </Pressable>
-                    </View>
-                </View> */}
             </View>
         </View>
+        <Pressable 
+        style={styles.contenedorSubmit}
+        onPress={() =>{
+                ingresoDatos();
+            }}>
+                <Text style={[{textAlign: 'center'},{padding:10}]}>
+                    Terminar/Enviar
+                </Text>
+            </Pressable>
     </View>
+    </ScrollView>
   )
 }
 
@@ -268,27 +252,25 @@ const styles = StyleSheet.create({
         marginTop: 60,
         fontWeight: '600',
         marginHorizontal:80,
-        fontFamily: 'Roboto'
+        //fontFamily: 'Roboto'
     },
     containerImg:{
         flexDirection: 'row',
-        marginHorizontal:20,
+        marginHorizontal:10,
         justifyContent:'space-around'
     },
     imagen: {
         width: 130,
         height: 150,
-        borderRadius: 20,
-        marginHorizontal: 90,
         marginVertical: 30,
         objectFit: 'fill',
-    },imagen2: {
+    },
+    imagen2: {
         width: 130,
         height: 150,
-        borderRadius: 20,
-        marginHorizontal: 90,
+        //borderRadius: 20,
         marginVertical: 30,
-        transform:[{scaleX:-1}],
+        //transform:[{scaleX:-1}],
         objectFit: 'fill',
     },
     Text:{
@@ -297,13 +279,13 @@ const styles = StyleSheet.create({
         fontWeight: '600',
         color: '#fff',
         marginLeft:30,
-        fontFamily: 'Roboto'
+        //fontFamily: 'Roboto'
     },
     text2:{
         fontSize:20,
          color:'#fff',
           textAlign:'center', marginBottom:5,
-          fontFamily: 'Roboto'
+          //fontFamily: 'Roboto'
     },
     containerCuerpo:{
         backgroundColor: '#e6e6fa',
@@ -317,7 +299,7 @@ const styles = StyleSheet.create({
     },
     stopwatchContainer:{
         marginTop:10,
-        padding: 10,
+        marginHorizontal:40
     }, 
     stopwatchText:{
         color: '#fff',
@@ -328,6 +310,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-around'
     },
     buttonContainer:{
+        marginTop:10,
         flexDirection:'row',
         justifyContent: 'space-around'
     },
@@ -335,6 +318,12 @@ const styles = StyleSheet.create({
         width:30,
         height:30,
         //color:'#41219f'  este debe ser el color del icono
+    },
+    contenedorSubmit:{
+        marginVertical:25,
+        backgroundColor:'#e6e6fa',
+        marginHorizontal:120,
+        borderRadius: 20
     }
 })
 

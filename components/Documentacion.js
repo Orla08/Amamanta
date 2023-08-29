@@ -500,7 +500,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         marginTop: 60,
         fontWeight: '700',
-        fontFamily: 'Roboto'
+        //fontFamily: 'Roboto'
     },
     contenedoresDeTexto: {
         marginHorizontal: 20,

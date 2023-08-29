@@ -1,7 +1,9 @@
+import React , {useEffect, useState} from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image, ImageBackground, Pressable, ScrollView, TouchableOpacity } from 'react-native';
 import { useNavigation } from "@react-navigation/native";
 import { AntDesign } from '@expo/vector-icons';
+import * as Font from 'expo-font';
 
 
 //SafeAreaView solo es en iphone
@@ -23,6 +25,24 @@ const iconPosiciones = require("../assets/imgHome/posiciones.png")
 
 
 export default function Home() {
+
+    const [fontsLoaded, setFontsLoaded] = useState(false);
+
+    useEffect(() => {
+        if (!fontsLoaded){
+            cargarFuentes();
+        }
+    });
+
+    const cargarFuentes = async () => {
+        await Font.loadAsync({
+            'roboto-light': require('../assets/fuentes/roboto/Roboto-Light.ttf'),
+        });
+        setFontsLoaded(true);
+    };
+
+
+
     const xx = useNavigation();
     return (
         <View style={styles.container}>
@@ -170,18 +190,6 @@ export default function Home() {
                                 <Text style={styles.txt2}>Recordatorio {'\n'}de lactancia</Text>
                             </TouchableOpacity>
                         </View>
-                        <View>
-                            <TouchableOpacity
-                            onPress={() => { xx.navigate("cronometroPrueba") }}>
-                                <View style={[styles.containerImg,]}>
-                                    <Image
-                                        source={iconRecordatorio}
-                                        style={styles.imgCards2}
-                                    />
-                                </View>
-                                <Text style={styles.txt2}>Cronometro</Text>
-                            </TouchableOpacity>
-                        </View>
                     </View>
                 </View>
             </View>
@@ -210,7 +218,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         marginTop: 60,
         fontWeight: '700',
-        fontFamily: 'Roboto'
+        //fontFamily: 'roboto-light'
     },
     contenedorFila:{
         position: 'absolute',
@@ -277,7 +285,7 @@ const styles = StyleSheet.create({
         marginTop:3,
         fontSize: 12,
         textAlign: 'center',
-        fontFamily: 'Roboto',
+        //fontFamily: 'roboto-light',
         lineHeight:12
     },
     ContainTxtHerr:{
@@ -295,14 +303,14 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         
         padding: 4,
-        fontFamily: 'Roboto'
+        //fontFamily: 'roboto-light'
     },
     contenedorCards2: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-       //marginLeft: 50,
-        //marginRight: 130
-        marginHorizontal:45
+       marginLeft: 50,
+        marginRight: 130
+        //marginHorizontal:45
     }
 
 

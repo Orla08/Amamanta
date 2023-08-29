@@ -33,7 +33,7 @@ const cronometroPrueba = () => {
   const cambiarTiempo = ()=>{
     setSegundos((prevState)=>{
         if(prevState + 1 == 60){
-            setMinutos(minutos + 1);
+            setMinutos(minutos +1);
             if (minutos == 60){
                 setHoras(horas + 1);
             }
@@ -43,14 +43,13 @@ const cronometroPrueba = () => {
     })
   }
 
-  setTiempo(horas+":"+minutos+":"+segundos)
-
+  
   return (
-    <View>
+    <View style={styles.container}>
       <Text style={{fontSize:30}}>
         {horas < 10 ? "0"+horas : horas} : 
         {minutos < 10 ? "0"+minutos : minutos} :
-        {segundos < 10 ? "0"+segundos : segundos} : 
+        {segundos < 10 ? "0"+segundos : segundos} 
         </Text>
 
         <Pressable
@@ -68,7 +67,6 @@ const cronometroPrueba = () => {
         >
             <Text>Detener</Text>
         </Pressable>
-
     </View>
   )
 }

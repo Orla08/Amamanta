@@ -33,7 +33,7 @@ const Login2 = () => {
 
    const autenticacion = async () => {
     try {
-        const response = await axios.post("http://10.1.82.216/php/login.php", {
+        const response = await axios.post("http://10.1.80.100/php/login.php", {
             id: id,
             email: email,
             contrasena: contrasena
@@ -43,7 +43,12 @@ const Login2 = () => {
             const userData = response.data; // Aquí están todos los datos del usuario
             console.log(userData);
             setId(userData.identificacion) //Aqui modifico el setId le asigno lo que obtengo de la api
+            //Guardando datos de sesion en el asynStorage 
             await AsyncStorage.setItem("token", "70");
+            await AsyncStorage.setItem("identificacion", userData.identificacion);
+            await AsyncStorage.setItem("nombre", userData.nombre);
+            await AsyncStorage.setItem("edad", userData.edad);
+            await AsyncStorage.setItem("email", userData.email);
             xx.navigate('Home');
         } else {
             alert("Credenciales incorrectas");
@@ -61,7 +66,7 @@ const Login2 = () => {
 const xx = useNavigation();
   return (
     <View style={styles.container}>
-      <TextInput placeholder="Email"
+      <TextInput placeholder="orlan@gmail.com"
        style={styles.inputs}
        keyboardType="email-address"
        onChangeText={(txtEscrito) => {setEmail(txtEscrito)}}
