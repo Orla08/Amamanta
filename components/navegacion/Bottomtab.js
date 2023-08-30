@@ -18,7 +18,7 @@ import Cronometro from "../Cronometro.js";
 import Recordatorio from "../Recordatorio.js";
 import Login from "../Login.js";
 import Registro from "../Registro.js";
-import cronometroPrueba from "../cronometroPrueba.js";
+import CronometroPrueba from "../CronometroPrueba.js";
 
 const iconVideos = require('/Users/imac007/Documents/GitHub/Amamanta/assets/iconos/videos.png')
 const iconHome = require('/Users/imac007/Documents/GitHub/Amamanta/assets/iconos/home.png')
@@ -83,7 +83,7 @@ function SatckGroup() {
             <Stack.Screen name="Cronometro" component={Cronometro} options={{ headerShown: false }} />
             <Stack.Screen name="Recordatorio" component={Recordatorio} options={{ headerShown: false }} />
             <Stack.Screen name="Registro" component={Registro} options={{ headerShown: false }} />
-            <Stack.Screen name="cronometroPrueba" component={cronometroPrueba} options={{ headerShown: false }} />
+            <Stack.Screen name="CronometroPrueba" component={CronometroPrueba} options={{ headerShown: false }} />
             
         </Stack.Navigator>
     )
