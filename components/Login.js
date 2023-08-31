@@ -1,9 +1,14 @@
-import { View, Text, StyleSheet, TextInput, ActivityIndicator, TouchableOpacity, Alert } from 'react-native'
+import { View, Text, StyleSheet, TextInput, Image, TouchableOpacity, Alert } from 'react-native'
 import AsyncStorage from '@react-native-async-storage/async-storage'; 
 import React, { useState } from 'react'
 import axios from 'axios'
 import { useNavigation } from '@react-navigation/native';
 
+
+const iconUsuario = require('../assets/iconos/iconUsuario.png')
+const icoEdad = require('../assets/iconos/edad.png')
+const icoEmail = require('../assets/iconos/iconEmail.png');
+const icoContrasena = require('../assets/iconos/iconContrasena.png');
 
 const Login2 = () => {
     const [id, setId] = useState(0);
@@ -33,7 +38,7 @@ const Login2 = () => {
 
    const autenticacion = async () => {
     try {
-        const response = await axios.post("http://10.1.80.146/php/login.php", {
+        const response = await axios.post("http://10.1.80.98/php/login.php", {
             id: id,
             email: email,
             contrasena: contrasena
@@ -66,31 +71,46 @@ const Login2 = () => {
 const xx = useNavigation();
   return (
     <View style={styles.container}>
-      <TextInput placeholder="orlan@gmail.com"
-       style={styles.inputs}
-       keyboardType="email-address"
-       onChangeText={(txtEscrito) => {setEmail(txtEscrito)}}
-       />
-      <TextInput placeholder="Contraseña" 
-      style={styles.inputs}
-      secureTextEntry={true}
-      onChangeText={(txtEscrito) => {setContrasena(txtEscrito)}}
-      />
-      <View >
-        <TouchableOpacity style={styles.button}
-        onPress={() =>{
-          autenticacion()
-          setEnviar(true)
-        }}
-        ><Text style={{color: 'white'}}>Ingresar</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.button}
-        onPress={() =>{xx.navigate("Registro")}}>
-            <Text style={{color: 'white'}}>Registrarse</Text>
-        </TouchableOpacity>
-      </View>
+        <Text style={styles.txtRegistarse}>Ingresa con tu cuenta o crea una nueva</Text>
+        <View style={styles.containInputs}>
+                <Image
+                style={styles.iconos}
+                source={icoEmail}
+                />
+            <TextInput placeholder="orlan@gmail.com"
+                style={styles.inputs}
+                keyboardType="email-address"
+                onChangeText={(txtEscrito) => {setEmail(txtEscrito)}}
+            />
+        </View>
+        <View style={styles.containInputs}>
+                <Image
+                style={styles.iconos}
+                source={icoContrasena}
+                />
+            <TextInput placeholder="Contraseña" 
+            style={styles.inputs}
+            secureTextEntry={true}
+            onChangeText={(txtEscrito) => {setContrasena(txtEscrito)}}
+            />
+        </View>
+        <View style={styles.containButton}>
+            <TouchableOpacity style={styles.btnIngreso}
+            onPress={() =>{
+            autenticacion()
+            setEnviar(true)
+            }}
+            ><Text style={{color: 'white'}}>Ingresar</Text>
+            </TouchableOpacity>
+            
+        </View>
        
+
+        <TouchableOpacity 
+            onPress={() =>{xx.navigate("Registro")}}>
+                <Text style={[styles.btnEnlaces,{textDecorationLine: 'underline'}]}>Crear una cuenta</Text>
+            </TouchableOpacity>
+
     </View>
   )
 }
@@ -103,18 +123,47 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center'
     },
-    inputs:{
-        backgroundColor: '#dbb2bd',
-        borderBottomColor: '#d6d1d2',
-        borderBottomWidth:1,
-        padding:10
+    txtRegistarse:{
+        fontSize:30,
+        textAlign: 'center',
+        color: '#584ba0',
+        fontWeight: 'bold',
+        marginBottom:15,
+        marginHorizontal:25
     },
-    button:{
+    containInputs:{
+        marginTop:10,
+        marginBottom:7,
+        marginHorizontal:50,
+        backgroundColor: '#dbb2bd',
+        padding:10,
+        flexDirection:'row',
+        borderRadius:3
+    },
+    inputs:{
+        marginLeft:10,
+        width:210,
+    },
+    iconos:{
+        width:20,
+        height:20,
+        
+    },
+    containButton:{
+        justifyContent: 'center',
+    },
+    btnIngreso:{
         marginTop:20,
-        padding:8,
+        padding:10,
         backgroundColor:'#584ba0',
-        borderRadius:10
-    }
+        textAlign:'center',
+        borderRadius:5
+    },
+    btnEnlaces:{
+        marginTop:40,
+        color:'#e67dba',
+        /*textDecorationColor: '#e67dba' */
+    },
 })
 
 export default Login2

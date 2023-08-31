@@ -29,7 +29,8 @@ const iconDocumentos= require('../../assets/iconos/documentos.png')
 export const Navegacion = () => {
 
     return (
-        <NavigationContainer>
+        <NavigationContainer
+        >
             <TabGroup />
         </NavigationContainer>
     );
@@ -71,7 +72,12 @@ const Stack = createNativeStackNavigator();
 function SatckGroup() {
     return (
         <Stack.Navigator>
-            <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
+            <Stack.Screen name="Login" component={Login} 
+            options={{ headerShown: false ,
+                tabBarStyle:{display:'none'}}} />
+            <Stack.Screen name="Registro" component={Registro}
+            options={{ headerShown: false ,
+                tabBarStyle:{display:'none'}}} />
             <Stack.Screen name="Home" component={Home} options={{ headerShown: false }} />
             <Stack.Screen name="Introduccion" component={Introduccion} options={{ headerShown: false }} />
             <Stack.Screen name="LactanciaMaterna" component={LactanciaMaterna} options={{ headerShown: false }} />
@@ -82,7 +88,6 @@ function SatckGroup() {
             <Stack.Screen name="TiposDePezon" component={TiposDePezon} options={{ headerShown: false }} />
             <Stack.Screen name="Cronometro" component={Cronometro} options={{ headerShown: false }} />
             <Stack.Screen name="Recordatorio" component={Recordatorio} options={{ headerShown: false }} />
-            <Stack.Screen name="Registro" component={Registro} options={{ headerShown: false }} />
             <Stack.Screen name="CronometroPrueba" component={CronometroPrueba} options={{ headerShown: false }} />
             
         </Stack.Navigator>

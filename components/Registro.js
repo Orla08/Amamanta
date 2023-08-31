@@ -22,7 +22,7 @@ const Login = () => {
         try {//Es un bloque try...catch, que maneja los errores que puedan ocurrir durante la ejecución de la función.
             //const response = await axios.post(...): Utiliza Axios para realizar una solicitud POST al servidor. Los datos proporcionados 
             //(nombre, edad, email y contraseña) se envían en formato JSON en el cuerpo de la solicitud.
-            const response = await axios.post("http://10.1.80.100/php/jjj.php", {
+            const response = await axios.post("http://10.1.80.98/php/jjj.php", {
                 nombre: nombre,
                 edad: edad,
                 email: email,
@@ -154,10 +154,9 @@ const styles = StyleSheet.create({
         marginBottom:7,
         marginHorizontal:50,
         backgroundColor: '#dbb2bd',
-        borderBottomColor: '#d6d1d2',
-        borderBottomWidth:1,
         padding:10,
-        flexDirection:'row'
+        flexDirection:'row',
+        borderRadius:3
     },
     inputs:{
         marginLeft:10,
@@ -165,8 +164,7 @@ const styles = StyleSheet.create({
     },
     iconos:{
         width:20,
-        height:20,
-        
+        height:20,   
     },
     TextBotones:{
         color: '#fff',
