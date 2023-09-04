@@ -1,16 +1,69 @@
 import React from 'react'
-import { View, Text, StyleSheet, ImageBackground, Image, ScrollView, Pressable } from 'react-native'
+import { View, Text, StyleSheet, ImageBackground, Image, ScrollView, Pressable, Button } from 'react-native'
 const imgIntrouccion = require('../assets/home/madre_hijo.jpg')
 import { AntDesign } from '@expo/vector-icons';
+import {Video, ResizeMode} from 'expo-av';
 
 
 const Videos = () => {
+
+    const video = React.useRef(null);
+    const [status, setStatus] = React.useState({});
+    const video2 = React.useRef(null);
+    const [status2, setStatus2] = React.useState({});
+
+
     return (
         <View style={styles.container}>
             <View style={[styles.containerIntroduccion, styles.sombra]}>
                 <Text style={styles.txtBienvenida}>Videos tutoriales</Text>
             </View>
             <ScrollView>
+            <View style={{alignItems: 'center'}}>
+                <Video
+                    ref={video}
+                    style={styles.video}
+                    source={{
+                    uri: 'https://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4',
+                    }}
+                    useNativeControls
+                    resizeMode={ResizeMode.CONTAIN}
+                    isLooping
+                    isMuted={false} // Habilita el sonido
+                    onPlaybackStatusUpdate={status => setStatus(() => status)}
+                />
+            </View>
+            <View style={styles.buttons}>
+                <Button
+                title={status.isPlaying ? 'Pause' : 'Play'}
+                onPress={() =>
+                    status.isPlaying ? video.current.pauseAsync() : video.current.playAsync()
+                }
+                />
+            </View>
+            <View style={{alignItems: 'center'}}>
+                <Video
+                    ref={video2}
+                    style={styles.video}
+                    source={
+                        require('../assets/videos/video.mp4')
+                    }
+                    useNativeControls
+                    resizeMode={ResizeMode.CONTAIN}
+                    isLooping
+                    isMuted={false} // Habilita el sonido
+                    onPlaybackStatusUpdate={status2 => setStatus2(() => status2)}
+                />
+            </View>
+            <View style={styles.buttons}>
+                <Button
+                title={status2.isPlaying ? 'Pause' : 'Play'}
+                onPress={() =>
+                    status2.isPlaying ? video2.current.pauseAsync() : video2.current.playAsync()
+                }
+                />
+            </View>
+
                 <View>
                     <Text style={[styles.textos]}>
                         Formas para alimentar al bebé
@@ -70,6 +123,10 @@ const styles = StyleSheet.create({
         marginTop: 60,
         fontWeight: '700',
         //fontFamily: 'Roboto'
+    },
+    video:{
+        width: 300, // Establece el ancho deseado para el video
+        height: 180, // Establece la altura deseada para el video
     },
     posicion: {
         flex: 1,

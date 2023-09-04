@@ -29,15 +29,14 @@ const iconDocumentos= require('../../assets/iconos/documentos.png')
 export const Navegacion = () => {
 
     return (
-        <NavigationContainer
-        >
-            <TabGroup />
+        <NavigationContainer >
+            <SatckGroup />
         </NavigationContainer>
     );
 }
 
 //Tab
-const Tab = createBottomTabNavigator();
+const Tab = createBottomTabNavigator(); //Instanciamos la clase createBottomTabNavigator en Tab
 
 function TabGroup() {
     return (
@@ -53,7 +52,7 @@ function TabGroup() {
                 tabBarShowLabel: false, 
                 tabBarIcon: ({focused}) => (<Image source={iconVideos} style={[{tintColor: focused? '#fbc0d1':'#41219f'},{width:34, height:24}]}/>) }} />
             
-            <Tab.Screen name="Inicio" component={SatckGroup}
+            <Tab.Screen name="Inicio" component={Home}
                 options={{ headerShown: false, 
                 tabBarShowLabel: false,
                 tabBarIcon: ({focused}) => (<Image source={iconHome} style={[{tintColor: focused? '#fbc0d1':'#41219f'},{width:33, height:30}]}/>) }}/>
@@ -67,18 +66,14 @@ function TabGroup() {
 }
 
 // //Stack
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator(); //Instanciamos la clase createNativeStackNavigator en Tab
 
 function SatckGroup() {
     return (
         <Stack.Navigator>
-            <Stack.Screen name="Login" component={Login} 
-            options={{ headerShown: false ,
-                tabBarStyle:{display:'none'}}} />
-            <Stack.Screen name="Registro" component={Registro}
-            options={{ headerShown: false ,
-                tabBarStyle:{display:'none'}}} />
-            <Stack.Screen name="Home" component={Home} options={{ headerShown: false }} />
+            <Stack.Screen name="Login" component={Login} options={{ headerShown: false}} />
+            <Stack.Screen name="Registro" component={Registro}options={{ headerShown: false }} />
+            <Stack.Screen name="Home" component={TabGroup} options={{ headerShown: false }} /> 
             <Stack.Screen name="Introduccion" component={Introduccion} options={{ headerShown: false }} />
             <Stack.Screen name="LactanciaMaterna" component={LactanciaMaterna} options={{ headerShown: false }} />
             <Stack.Screen name="LQPETC" component={LQPETC} options={{ headerShown: false }} />
