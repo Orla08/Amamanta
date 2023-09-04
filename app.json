@@ -26,7 +26,6 @@
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "permissions": ["CAMERA_ROLL", "AUDIO_RECORDING", "LOCATION", "INTERNET"],
     "plugins": [
       [
         "expo-av",

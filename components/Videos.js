@@ -18,30 +18,33 @@ const Videos = () => {
             <View style={[styles.containerIntroduccion, styles.sombra]}>
                 <Text style={styles.txtBienvenida}>Videos tutoriales</Text>
             </View>
-            <ScrollView>
-            <View style={{alignItems: 'center'}}>
-                <Video
-                    ref={video}
-                    style={styles.video}
-                    source={{
-                    uri: 'https://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4',
-                    }}
-                    useNativeControls
-                    resizeMode={ResizeMode.CONTAIN}
-                    isLooping
-                    isMuted={false} // Habilita el sonido
-                    onPlaybackStatusUpdate={status => setStatus(() => status)}
-                />
+            <ScrollView showsVerticalScrollIndicator={false}>
+            <View style={styles.contenedorVideos}>
+                <View style={{alignItems: 'center'}}>
+                    <Video
+                        ref={video}
+                        style={styles.video}
+                        source={{
+                        uri: 'https://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4',
+                        }}
+                        useNativeControls
+                        resizeMode={ResizeMode.CONTAIN}
+                        isLooping
+                        isMuted={false} // Habilita el sonido
+                        onPlaybackStatusUpdate={status => setStatus(() => status)}
+                    />
+                </View>
+                <View style={styles.buttons}>
+                    <Button
+                    title={status.isPlaying ? 'Pause' : 'Play'}
+                    onPress={() =>
+                        status.isPlaying ? video.current.pauseAsync() : video.current.playAsync()
+                    }
+                    />
+                </View>
             </View>
-            <View style={styles.buttons}>
-                <Button
-                title={status.isPlaying ? 'Pause' : 'Play'}
-                onPress={() =>
-                    status.isPlaying ? video.current.pauseAsync() : video.current.playAsync()
-                }
-                />
-            </View>
-            <View style={{alignItems: 'center'}}>
+            <View style={styles.contenedorVideos}>
+            <View >
                 <Video
                     ref={video2}
                     style={styles.video}
@@ -63,32 +66,13 @@ const Videos = () => {
                 }
                 />
             </View>
+            </View>
+            
+            
 
                 <View>
                     <Text style={[styles.textos]}>
                         Formas para alimentar al bebé
-                    </Text>
-                </View>
-                <ImageBackground
-                    source={imgIntrouccion} style={styles.imagenprueba}>
-                    <View style={styles.posicion}>
-                        <AntDesign name="caretright" size={50} color="black" />
-                    </View>
-                </ImageBackground>
-                <View>
-                    <Text style={[styles.textos]}>
-                        Tips para dormir al bebé
-                    </Text>
-                </View>
-                <ImageBackground
-                    source={imgIntrouccion} style={styles.imagenprueba}>
-                    <View style={styles.posicion}>
-                        <AntDesign name="caretright" size={50} color="black" />
-                    </View>
-                </ImageBackground>
-                <View>
-                    <Text style={[styles.textos]}>
-                        ¿Por qué el bebé duerme tanto?
                     </Text>
                 </View>
                 <ImageBackground
@@ -124,9 +108,14 @@ const styles = StyleSheet.create({
         fontWeight: '700',
         //fontFamily: 'Roboto'
     },
+    contenedorVideos:{
+        alignItems: 'center',
+        paddingTop:20
+    },
     video:{
         width: 300, // Establece el ancho deseado para el video
         height: 180, // Establece la altura deseada para el video
+        borderRadius:20
     },
     posicion: {
         flex: 1,
