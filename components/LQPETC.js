@@ -1,9 +1,11 @@
 import { View, Text, StyleSheet, Image, ScrollView, Pressable } from 'react-native'
 import React from 'react'
-const imgIntrouccion = require("../assets/tonykroos.jpg");
 import { useNavigation } from "@react-navigation/native";
 import { AntDesign } from '@expo/vector-icons';
 import Home from './HomeScreen.js';
+
+
+const imgIntrouccion = require("../assets/iconos/tocaEstomag.png");
 
 const LQPETC = () => {
     const xx = useNavigation();
@@ -108,18 +110,22 @@ const styles = StyleSheet.create({
         lineHeight:28
     },
     imagen: {
-        backgroundColor: '#000',
-        width: 300,
-        height: 300,
+        width: 85,
+        height: 240,
         borderRadius: 20,
-        marginHorizontal: 50,
+        marginHorizontal: 150,
         marginVertical: 30,
+        objectFit: 'fill', //Para que la imagen se adapte al tamaño
     },
     txt_s: {
+        paddingTop:25,
+        padding:2,
         fontSize: 20,
+        marginHorizontal: 40,
         marginBottom: 10,
         textAlign: 'justify',
-        marginHorizontal: 30
+        color:'#595858',
+        lineHeight: 19
     },
     conceptos: {
         fontSize: 20,

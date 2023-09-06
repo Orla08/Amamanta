@@ -180,7 +180,7 @@ export default function Home() {
                         </View>
                         <View>
                             <TouchableOpacity
-                            onPress={() => { xx.navigate("Recordatorio") }}>
+                            onPress={() => { xx.navigate("Cronometro") }}>
                                 <View style={[styles.containerImg,]}>
                                     <Image
                                         source={iconRecordatorio}
@@ -206,7 +206,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
     },
     containerIntroduccion: {
-        backgroundColor: '#ffadc6',
+        backgroundColor: '#FFB0CB',
         height: 130,
         marginBottom: 10,
         justifyContent: 'center',
@@ -241,8 +241,10 @@ const styles = StyleSheet.create({
         color: '#fff',
         textAlign: 'center',
         backgroundColor: '#000',
-        opacity: 0.5,
+        opacity: 0.4,
         padding: 6,
+        fontSize:18,
+        fontWeight:'500'
     },
     imagenprueba: {
         width: 300,
@@ -285,11 +287,12 @@ const styles = StyleSheet.create({
         marginTop:3,
         fontSize: 12,
         textAlign: 'center',
+        color: '#595858',
         //fontFamily: 'roboto-light',
         lineHeight:12
     },
     ContainTxtHerr:{
-        backgroundColor: '#ffadc6',
+        backgroundColor: '#FFB0CB',
         marginRight: 200,
         marginLeft: 50,
         borderRadius: 20,

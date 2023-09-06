@@ -29,11 +29,8 @@ function Introduccion() {
                     cual es uno de los mejores momentos de tu vida.
                 </Text>
                 <Text style={styles.txt_s}>
-                    Esta cartilla busca guiarte, dando
-                    respuesta a tus dudas e inquietudes
-                    y brindándote consejos para este
-                    proceso tan importante para ti,
-                    como para tu bebé y toda la familia.
+                    Esta cartilla busca guiarte, dando respuesta a tus dudas e inquietudes y brindándote consejos para este
+                    proceso tan importante para ti, como para tu bebé y toda la familia.
                 </Text>
             </View>
         </View>
@@ -70,7 +67,6 @@ const styles = StyleSheet.create({
         marginLeft:70,
         //marginHorizontal:80,
         fontWeight :'600',
-        fontFamily: 'Roboto'
     },
     imagen: {
         backgroundColor: '#000',
@@ -81,11 +77,13 @@ const styles = StyleSheet.create({
         marginVertical: 30,
     },
     txt_s: {
+        padding:2,
         fontSize: 20,
         marginHorizontal: 50,
         marginBottom: 10,
         textAlign: 'justify',
-        fontFamily: 'Roboto'
+        color:'#595858',
+        lineHeight: 19
     }
 
 })

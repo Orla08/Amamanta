@@ -134,7 +134,8 @@ const styles = StyleSheet.create({
         fontSize: 20,
         marginBottom: 10,
         textAlign: 'justify',
-        marginHorizontal: 30
+        marginHorizontal: 30,
+        color:'#595858',
     },
     conceptos: {
         fontSize: 20,

@@ -1,11 +1,12 @@
 import { View, Text, Image, StyleSheet, Pressable } from 'react-native'
 import React from 'react'
-const imgIntrouccion = require("../assets/tonykroos.jpg");
 import { useNavigation } from "@react-navigation/native";
 import { AntDesign } from '@expo/vector-icons';
 import Home from './HomeScreen.js';
 
 
+
+const imgLac = require("../assets/iconos/LacMac.png");
 
 const LactanciaMaterna = () => {
     const xx = useNavigation();
@@ -33,7 +34,7 @@ const LactanciaMaterna = () => {
             <View>
                 <Image
                     style={styles.imagen}
-                    source={imgIntrouccion}
+                    source={imgLac}
                 />
             </View>
         </View>
@@ -70,18 +71,22 @@ const styles = StyleSheet.create({
         marginHorizontal:40
     },
     imagen: {
-        backgroundColor: '#000',
-        width: 300,
-        height: 300,
+        width: 309,
+        height: 291,
         borderRadius: 20,
         marginHorizontal: 50,
         marginVertical: 30,
+        objectFit: 'fill'
     },
     txt_s: {
+        paddingTop:25,
+        padding:2,
         fontSize: 20,
         marginHorizontal: 50,
         marginBottom: 10,
         textAlign: 'justify',
+        color:'#595858',
+        lineHeight: 19
     }
 
 })

@@ -50,17 +50,17 @@ function TabGroup() {
             <Tab.Screen name="Videos" component={Videos}
                 options={{ headerShown: false, 
                 tabBarShowLabel: false, 
-                tabBarIcon: ({focused}) => (<Image source={iconVideos} style={[{tintColor: focused? '#fbc0d1':'#41219f'},{width:34, height:24}]}/>) }} />
+                tabBarIcon: ({focused}) => (<Image source={iconVideos} style={[{tintColor: focused? '#FAD2E0':'#6A71B9'},{width:34, height:24}]}/>) }} />
             
             <Tab.Screen name="Inicio" component={Home}
                 options={{ headerShown: false, 
                 tabBarShowLabel: false,
-                tabBarIcon: ({focused}) => (<Image source={iconHome} style={[{tintColor: focused? '#fbc0d1':'#41219f'},{width:33, height:30}]}/>) }}/>
+                tabBarIcon: ({focused}) => (<Image source={iconHome} style={[{tintColor: focused? '#FAD2E0':'#6A71B9'},{width:33, height:30}]}/>) }}/>
             
             <Tab.Screen name="Documentacion" component={Documentacion}
                 options={{ headerShown: false, 
                 tabBarShowLabel: false,
-                tabBarIcon: ({focused}) => (<Image source={iconDocumentos} style={[{tintColor: focused? '#fbc0d1':'#41219f'},{width:21, height:29}]}/>) }}/>
+                tabBarIcon: ({focused}) => (<Image source={iconDocumentos} style={[{tintColor: focused? '#FAD2E0':'#6A71B9'},{width:21, height:29}]}/>) }}/>
         </Tab.Navigator>
     )
 }

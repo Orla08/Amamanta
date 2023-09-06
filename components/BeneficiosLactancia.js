@@ -1,9 +1,13 @@
 import { View, Text, StyleSheet, Image, ScrollView, Pressable } from 'react-native'
 import React from 'react'
-const imgIntrouccion = require("../assets/tonykroos.jpg");
 import { AntDesign } from '@expo/vector-icons';
 import Home from './HomeScreen.js';
 import { useNavigation } from "@react-navigation/native";
+
+
+
+const imgIntrouccion = require("../assets/imgHome/made_hijo.png");
+
 
 const BeneficiosLactancia = () => {
     const xx = useNavigation();
@@ -148,7 +152,7 @@ const styles = StyleSheet.create({
     imagen: {
         backgroundColor: '#000',
         width: 300,
-        height: 300,
+        height: 180,
         borderRadius: 20,
         marginHorizontal: 50,
         marginVertical: 30,
@@ -157,7 +161,8 @@ const styles = StyleSheet.create({
         fontSize: 20,
         marginBottom: 10,
         textAlign: 'justify',
-        marginHorizontal: 30
+        marginHorizontal: 30,
+        color:'#595858',
     },
     conceptos: {
         fontSize: 20,
