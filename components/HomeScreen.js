@@ -180,7 +180,7 @@ export default function Home() {
                         </View>
                         <View>
                             <TouchableOpacity
-                            onPress={() => { xx.navigate("Recordatorio") }}>
+                            onPress={() => { xx.navigate("Prueba") }}>
                                 <View style={[styles.containerImg,]}>
                                     <Image
                                         source={iconRecordatorio}

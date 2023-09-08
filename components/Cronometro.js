@@ -134,7 +134,7 @@ const Cronometro = () => {
   const ingresoDatos = async () => {
     
     try {
-        const response = await axios.post("http://10.1.80.105/php/data.php", {
+        const response = await axios.post("http://10.1.80.62/php/data.php", {
             seno: seno,
 /*             tiempo: tiempoAmamantando, */
             tiempo:tiempo,

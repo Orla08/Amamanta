@@ -38,7 +38,7 @@ const Login2 = () => {
 
    const autenticacion = async () => {
     try {
-        const response = await axios.post("http://192.168.207.115/php/login.php", {
+        const response = await axios.post("http://10.1.80.62/php/login.php", {
             id: id,
             email: email,
             contrasena: contrasena

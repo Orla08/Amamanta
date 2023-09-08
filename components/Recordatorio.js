@@ -4,10 +4,12 @@ import RNPickerSelect from 'react-native-picker-select';
 
 const Recordatorio = () => {
   const [activo, setActivo] = useState(false);
-  const [tiempo, setTiempo] = useState(0);
+  const [tiempoEnSegundos, setTiempoEnSegundos] = useState(0);
+  const [tiempoRestante, setTiempoRestante] = useState(0);
   const [segundos, setSegundos] = useState(0);
   const [minutos, setMinutos] = useState(0);
   const [horas, setHoras] = useState(0);
+  const [mostrarTiempo, setMostrarTiempo] = useState('');
 
   const numbers = Array.from({ length: 60 }, (_, index) => ({
     label: index.toString(),
@@ -18,32 +20,68 @@ const Recordatorio = () => {
     value: index,
   }));
 
+  useEffect(() =>{
+    console.log("",mostrarTiempo,",  ",tiempoEnSegundos )
+  },[mostrarTiempo]);
+  
+  useEffect(() => { //De esta forma actualizamos el tiempo en segundos de inmediato
+    const tiempo =
+      (horas !== null ? horas : 0) * 3600 +
+      (minutos !== null ? minutos : 0) * 60 +
+      (segundos !== null ? segundos : 0);
+    setTiempoEnSegundos(tiempo);
+    setMostrarTiempo(
+      `${horas !== null ? horas : '00'} : ${
+        minutos !== null ? minutos : '00'
+      } : ${segundos !== null ? segundos : '00'}`
+    );
+  }, [horas, minutos, segundos]);
+
+
   const iniciarTemporizador = () => {
-    setActivo(true); //Se ejecuta la funcion y cambia el stateActivo a true;
+    if (tiempoEnSegundos > 0) { //Si el tiempo en segundos es mayor a cero entoces
+      setTiempoRestante(tiempoEnSegundos); //A tiempo restante le asignamos la actualizacion de tiempo en segundos
+      setActivo(true);//Y cambiamos el active a true
+      
+    } else {
+      Alert.alert("Seleccione un tiempo válido antes de empezar."); //Si el tiempo en segundos no es mayor a cero debe escoger un tiempo valido 
+    }
   };
 
-  useEffect(() => {
-    let intervalo;
 
+  useEffect(() => {
+
+    let intervalo;
     if (activo) {
       intervalo = setInterval(() => {
-        if (segundos > 0) { //Si la cantidad de segundos que colocas que escoge el usuario es mayor a cero
-          setSegundos((prevSegundos) => prevSegundos - 1); //Descuente un segundo por intevalos de mil milisegundos
-        } else { //Sino 
-          if (minutos > 0) { //Si 
+        if (tiempoRestante > 0) {
+          setTiempoRestante((prevTiempo) => prevTiempo - 1);
+          // Lógica para restar los segundos, minutos y horas
+          setSegundos((prevSegundos) => prevSegundos - 1);
+          if (segundos <= 0) {
             setMinutos((prevMinutos) => prevMinutos - 1);
             setSegundos(59);
-          } else {
-            if (horas > 0) {
+            if (minutos <= 0) {
               setHoras((prevHoras) => prevHoras - 1);
               setMinutos(59);
-              setSegundos(59);
-            } else {
-              setActivo(false);
             }
+          }
+        } else {
+          setActivo(false);
+          clearInterval(intervalo);
+          if (tiempoRestante === 0) {
+            setMostrarTiempo(`00:00:00`)
+            Alert.alert("Se agotó el tiempo");
           }
         }
       }, 1000);
+      
+      // Agregar esta condición para detener el intervalo cuando tiempoRestante es 0
+      if (tiempoRestante === 0) {
+        setActivo(false);
+        clearInterval(intervalo);
+      }
+
     } else {
       clearInterval(intervalo);
     }
@@ -51,16 +89,8 @@ const Recordatorio = () => {
     return () => {
       clearInterval(intervalo);
     };
-  }, [activo, segundos, minutos, horas]);
+  }, [activo, tiempoRestante]);
 
-
-    useEffect(() => {
-      if(activo){
-        if(segundos===0 && minutos===0 & horas===0){
-          Alert.alert("Se agoto el tiempo")
-        }
-      }
-    })
 
 
 
@@ -68,7 +98,7 @@ const Recordatorio = () => {
   return (
     <View style={styles.container}>
       <Text>Recordatorio</Text>
-      <Text>Valor seleccionado: {horas} : {minutos} : {segundos}</Text>
+      <Text>Valor seleccionado: {mostrarTiempo}</Text>
       <View style={styles.input}>
       <RNPickerSelect
         onValueChange={(value) => setHoras(value)}
