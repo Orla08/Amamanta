@@ -20,6 +20,8 @@ import Login from "../Login.js";
 import Registro from "../Registro.js";
 import CronometroPrueba from "../CronometroPrueba.js";
 import Prueba from "../Prueba.js";
+import ConsejosBebe from "../ConsejosBebe";
+import DescansoBebe from "../DescansoBebe";
 
 const iconVideos = require('/Users/imac007/Documents/GitHub/Amamanta/assets/iconos/videos.png')
 const iconHome = require('/Users/imac007/Documents/GitHub/Amamanta/assets/iconos/home.png')
@@ -86,6 +88,8 @@ function SatckGroup() {
             <Stack.Screen name="Recordatorio" component={Recordatorio} options={{ headerShown: false }} />
             <Stack.Screen name="CronometroPrueba" component={CronometroPrueba} options={{ headerShown: false }} />
             <Stack.Screen name="Prueba" component={Prueba} options={{ headerShown:false}}/>
+            <Stack.Screen name="ConsejosBebe" component={ConsejosBebe} options={{ headerShown:false}}/>
+            <Stack.Screen name="DescansoBebe" component={DescansoBebe} options={{ headerShown:false}}/>
             
         </Stack.Navigator>
     )

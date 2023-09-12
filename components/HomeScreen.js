@@ -8,7 +8,8 @@ import * as Font from 'expo-font';
 
 //SafeAreaView solo es en iphone
 
-const imgIntrouccion = require('../assets/home/madre_hijo.jpg')
+const imgIntrouccion = require('../assets/imgHome/mama-amamantando.jpg')
+const imgIntrouccion2 = require('../assets/imgHome/madre2.jpg')
 
 const iconIntroduccion = require("../assets/imgHome/introduccion.png")
 const iconTiposDePezon = require("../assets/imgHome/tiposdepezon.png")
@@ -51,13 +52,31 @@ export default function Home() {
             </View>
             {/* Imagen y cards */}
             <View>
-                <ImageBackground
-                    source={imgIntrouccion} style={[styles.imagenprueba,]}>
-                    <Text style={{ color: '#fff' }}>{'<'}</Text>
-                    <View style={styles.posicion}>
-                        <Text style={styles.txtImagen}>Consejos para dormir el bebé</Text>
-                    </View>
-                </ImageBackground>
+
+                <ScrollView
+                horizontal={true}
+                showsHorizontalScrollIndicator={false}>
+                    <Pressable
+                    onPress={() => { xx.navigate("ConsejosBebe") }}>
+                        <ImageBackground
+                            source={imgIntrouccion} style={[styles.imagenprueba,]}>
+                            <View style={styles.posicion}>
+                                <Text style={styles.txtImagen}>Consejos para dormir el bebé</Text>
+                            </View>
+                        </ImageBackground>
+                    </Pressable>
+                    <Pressable
+                    onPress={() => { xx.navigate("DescansoBebe") }}>
+                        <ImageBackground
+                            source={imgIntrouccion2} style={[styles.imagenprueba,]}>
+                            <View style={styles.posicion}>
+                                <Text style={styles.txtImagen2}>Posiciones
+                                para el descanso del bebé</Text>
+                            </View>
+                        </ImageBackground>
+                    </Pressable>
+
+                </ScrollView>
 
                   
                 <ScrollView
@@ -242,8 +261,16 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         backgroundColor: '#000',
         opacity: 0.4,
-        padding: 6,
-        fontSize:18,
+        padding: 8,
+        fontSize:15,
+        fontWeight:'500'
+    },txtImagen2: {
+        color: '#fff',
+        textAlign: 'center',
+        backgroundColor: '#000',
+        opacity: 0.4,
+        padding: 8,
+        fontSize:15,
         fontWeight:'500'
     },
     imagenprueba: {
