@@ -309,9 +309,9 @@ const showAlert2 = () =>
             </View>
         </View>
             <View style={styles.containerCuerpo}>
-             <Text style={{marginBottom:5}}>
-                <Text style={styles.Text}>{activo ?`Cronometro En Curso ${'\n'}`: `Conometro${'\n'}En Pausa `}</Text>
-                <Text style={styles.Text}>{activo ? "Lactando en seno "+seno : ""}</Text>               
+             <Text style={styles.Text}>
+                <Text >{activo ?`Cronometro En Curso ${'\n'}`: `Conometro${'\n'}En Pausa `}</Text>
+                <Text >{activo ? "Lactando en seno "+seno : ""}</Text>               
             </Text>         
             <View >
                 <View style={styles.contCards}>
@@ -330,7 +330,7 @@ const showAlert2 = () =>
                         {minutos < 10 ? `0${minutos}` : minutos}:
                         {segundos < 10 ? `0${segundos}` : segundos}
                     </Text>*/}
-                    <Text style={[{ fontSize: 40 }, {textAlign:'center'},{color:'#fff'}]}>
+                    <Text style={[{ fontSize: 40 }, {textAlign:'center'},{color:'#c6bdbd'}]}>
                         {tiempo}
                     </Text>
                 </View>
@@ -413,11 +413,12 @@ const styles = StyleSheet.create({
         objectFit: 'fill',
     },
     Text:{
-        marginTop:15,
+        marginTop:7,
         fontSize: 20,
         fontWeight: '700',
         color: '#595858',
-        textAlign: 'center'
+        textAlign: 'center',
+        marginBottom:5
         //fontFamily: 'Roboto'
     },
     text2:{
@@ -432,7 +433,7 @@ const styles = StyleSheet.create({
     },
     contCards:{
         marginBottom:5,
-        backgroundColor: '#6A71B9',
+        backgroundColor: '#FFF0F7',
         borderRadius:10,
         padding:15,
         marginHorizontal:73
