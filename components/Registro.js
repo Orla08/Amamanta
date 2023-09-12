@@ -22,7 +22,7 @@ const Login = () => {
         try {//Es un bloque try...catch, que maneja los errores que puedan ocurrir durante la ejecución de la función.
             //const response = await axios.post(...): Utiliza Axios para realizar una solicitud POST al servidor. Los datos proporcionados 
             //(nombre, edad, email y contraseña) se envían en formato JSON en el cuerpo de la solicitud.
-            const response = await axios.post("http://10.1.80.62/php/jjj.php", {
+            const response = await axios.post("http://10.1.80.37/php/jjj.php", {
                 nombre: nombre,
                 edad: edad,
                 email: email,
@@ -71,12 +71,13 @@ const Login = () => {
     const xx = useNavigation();
   return (
     <View style={styles.container}>
+        {/* Imagen De Login*/}
+            <Image
+            source= {require('../assets/imgHome/AmamantaLogo.png')}
+            style={styles.imgLogo}
+            />
         <View>
-            {/* Logo de login*/}
-
-            {/* Imagen de palabra amamanta*/}
-
-            {/* Formulatio De Login*/}
+            {/* Formulario De Login*/}
             <Text style={styles.txtRegistarse}>Registrarse</Text>
             <View style={styles.containInputs}>
                  <Image
@@ -130,7 +131,11 @@ const Login = () => {
                     <Text style={styles.TextBotones}>Registrarse</Text>
                 </TouchableOpacity>
             </View>
-        </View>   
+        </View>
+        <TouchableOpacity 
+            onPress={() =>{xx.navigate("Login")}}>
+                <Text style={[styles.btnEnlaces,{textDecorationLine: 'underline'}]}>Ya tengo cuenta de ingreso</Text>
+        </TouchableOpacity>   
     </View>
   )
 }
@@ -138,14 +143,22 @@ const Login = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#f7e3e9',
+        backgroundColor: '#FFF0F7',
         padding: 20,
-        justifyContent: 'center'
+        alignItems: 'center',
+        // justifyContent: 'center',
     },
+    imgLogo:{
+        width:280,
+       height:200,
+       objectFit:'fill',
+       marginTop:70,
+       marginBottom:40 
+   },
     txtRegistarse:{
-        fontSize:40,
+        fontSize:30,
         textAlign: 'center',
-        color: '#584ba0',
+        color: '#6A71B9',
         fontWeight: 'bold',
         marginBottom:15
     },
@@ -153,10 +166,10 @@ const styles = StyleSheet.create({
         marginTop:10,
         marginBottom:7,
         marginHorizontal:50,
-        backgroundColor: '#dbb2bd',
+        backgroundColor: '#FAD2E0',
         padding:10,
         flexDirection:'row',
-        borderRadius:3
+        borderRadius:10
     },
     inputs:{
         marginLeft:10,
@@ -177,10 +190,16 @@ const styles = StyleSheet.create({
     },
     button:{
         marginTop:20,
-        padding:8,
-        backgroundColor:'#584ba0',
+        padding:10,
+        backgroundColor:'#6A71B9',
         borderRadius:10,
-    }
+    },btnEnlaces:{
+        marginTop:40,
+        color:'#FF7BAC',
+        textAlign: 'center',
+        fontWeight:'600'
+        /*textDecorationColor: '#FF7BAC' */
+    },
 })
 
 

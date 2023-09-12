@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { View, Text, Button, StyleSheet, TextInput, Pressable, Alert } from 'react-native';
+import { View, Text, Button, StyleSheet, TextInput, Pressable, Alert,TouchableOpacity } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
-import { useNavigation } from "@react-navigation/native";
+//import { useNavigation } from "@react-navigation/native";
 import * as Notifications from 'expo-notifications';
 
 class Prueba extends Component {
@@ -22,6 +22,8 @@ class Prueba extends Component {
     const hours = parseInt(inputHours, 10);
     const minutes = parseInt(inputMinutes, 10);
     const seconds = parseInt(inputSeconds, 10);
+
+
 
     if (hours >= 0 && minutes >= 0 && seconds >= 0) {
       const totalSeconds = hours * 3600 + minutes * 60 + seconds;
@@ -80,13 +82,18 @@ class Prueba extends Component {
 
   // Función para enviar una notificación
   sendNotification = async () => {
-    await Notifications.scheduleNotificationAsync({
-      content: {
-        title: 'Temporizador terminado',
-        body: '¡El temporizador ha finalizado!',
-      },
-      trigger: null, // Notificación inmediata
-    });
+    try {
+      await Notifications.scheduleNotificationAsync({
+        content: {
+          title: 'Temporizador terminado',
+          body: '¡El temporizador ha finalizado!',
+        },
+        trigger: null, // Notificación inmediata
+      });
+    } catch (error) {
+      console.error('Error al programar la notificación:', error);
+    }
+    
   };
 
   componentWillUnmount() {
@@ -96,17 +103,19 @@ class Prueba extends Component {
   render() {
     const { inputHours, inputMinutes, inputSeconds, remainingSeconds, isRunning } = this.state;
     const formattedTime = this.formatTime(remainingSeconds);
-
+    // const navegacionb = useNavigation();
     return (
       <View style={styles.container}>
         <View style={styles.containerIntroduccion}>
-          <Pressable style={styles.iconoAtras} onPress={() => { navigate("Home") }}>
+          <Pressable style={styles.iconoAtras} onPress={() => { xx.navigate("Home") }}>
             <AntDesign name="left" size={24} color="white" />
           </Pressable>
           <Text style={styles.txtBienvenida}>Cronómetro</Text>
         </View>
-        <Text>Temporizador: {formattedTime}</Text>
-        <View style={{ flexDirection: 'row' }}>
+          <Text style={styles.txtSuperior}>
+          Digite la cantidad de tiempo en la que desea volver amamantar al bebe, en el formato  (Horas:Minutos:Segundos) 
+          </Text>
+        <View style={{ flexDirection: 'row' , justifyContent:'space-between', marginHorizontal:80}}>
           <TextInput
             style={styles.input}
             placeholder=" Horas "
@@ -114,7 +123,7 @@ class Prueba extends Component {
             onChangeText={(text) => this.setState({ inputHours: text })}
             value={inputHours}
           />
-          <Text style={{ marginTop: 1 }}> : </Text>
+          <Text style={{ marginTop: 10 }}> : </Text>
           <TextInput
             style={styles.input}
             placeholder=" Minutos "
@@ -122,7 +131,7 @@ class Prueba extends Component {
             onChangeText={(text) => this.setState({ inputMinutes: text })}
             value={inputMinutes}
           />
-          <Text style={{ marginTop: 1 }}> : </Text>
+          <Text style={{ marginTop: 10 }}> : </Text>
           <TextInput
             style={styles.input}
             placeholder=" Segundos "
@@ -131,15 +140,42 @@ class Prueba extends Component {
             value={inputSeconds}
           />
         </View>
+        <View >
+            {!isRunning ? (
+              <View style={styles.contenedorBoton1}>
+                  <TouchableOpacity
+                onPress={this.startTimer} 
+                style={styles.btns}
+                >
+                  <Text>Iniciar</Text>
+                </TouchableOpacity>
+              </View>
+                
+            ) : (
+                <View style={styles.contenedorBoton2}>
+                  <TouchableOpacity
+                  onPress={this.stopTimer} 
+                  style={styles.btns}
+                  >
+                      <Text>Detener</Text>
+                  </TouchableOpacity>
 
-        {!isRunning ? (
-          <Button title="Iniciar" onPress={this.startTimer} />
-        ) : (
-          <>
-            <Button title="Detener" onPress={this.stopTimer} />
-            <Button title="Reiniciar" onPress={this.resetTimer} />
-          </>
-        )}
+                  <TouchableOpacity
+                  onPress={this.resetTimer}
+                  style={styles.btns}
+                  >
+                      <Text>Reiniciar</Text>
+                  </TouchableOpacity>
+                </View>
+                
+              
+            )}
+        </View>
+        
+
+        <Text style={styles.temporizador}>
+          Temporizador: {'\n'}{'\n'}{ formattedTime}
+          </Text>
       </View>
     );
   }
@@ -168,13 +204,40 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     marginHorizontal: 80,
   },
+  txtSuperior:{
+    marginVertical:40,
+    textAlign: 'justify',
+    fontSize: 17,
+    marginHorizontal:40,
+  },
   input: {
-    height: 40,
+    height: 30,
     borderColor: 'gray',
     borderWidth: 1,
-    paddingHorizontal: 10,
+    paddingHorizontal: 3,
     margin: 5,
   },
+  contenedorBoton1:{
+    flexDirection: 'row',
+    justifyContent:'space-around'
+  },
+  contenedorBoton2:{
+    justifyContent:'space-around',
+    marginHorizontal:90,
+    flexDirection:'row'
+  },
+  btns:{
+    backgroundColor:'#6A71B9',
+    color: '#fff',
+    padding:5,
+    borderRadius:6
+  },
+  temporizador:{
+    marginTop: 60,
+    fontSize:20,
+    fontWeight: '600',
+    textAlign: 'center',
+  }
 });
 
 export default Prueba;

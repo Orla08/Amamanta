@@ -134,7 +134,7 @@ const Cronometro = () => {
   const ingresoDatos = async () => {
     
     try {
-        const response = await axios.post("http://10.1.80.62/php/data.php", {
+        const response = await axios.post("http://10.1.80.37/php/data.php", {
             seno: seno,
 /*             tiempo: tiempoAmamantando, */
             tiempo:tiempo,
@@ -232,7 +232,7 @@ const showAlert2 = () =>
             <Text style={styles.txtBienvenida}>Cronometro</Text>
         </View>
         <View >
-            <Text style={{textAlign: "center", fontSize:25, marginVertical:10}}> {!alert2 ? `Presione el seno con el${'\n'}cual amamantará al niño` : "Cambió de seno"} </Text>
+            <Text style={styles.txtSuperior}> {!alert2 ? `Presione el seno con el${'\n'}cual amamantará al niño` : "Cambió de seno"} </Text>
             <View style={styles.containerImg}>
                 <View>
                     <TouchableOpacity
@@ -261,7 +261,7 @@ const showAlert2 = () =>
                             style={styles.imagen}
                             source={imgSenoIzquier}
                         />
-                        <Text style={{textAlign: "center", fontSize:20}}>IZQUIERDO</Text>
+                        <Text style={{textAlign: "center", fontSize:20, color:'#595858',fontWeight: '600',}}>IZQUIERDO</Text>
                     </TouchableOpacity>
                 </View>
                 <View>
@@ -291,7 +291,7 @@ const showAlert2 = () =>
                             style={styles.imagen2}
                             source={imgSenoDerecho}
                         />
-                        <Text style={{textAlign: "center", fontSize:20}}>DERECHO</Text>
+                        <Text style={{textAlign: "center", fontSize:20, color:'#595858',fontWeight: '600',}}>DERECHO</Text>
                     </TouchableOpacity>
                 </View>
                 
@@ -335,7 +335,7 @@ const showAlert2 = () =>
             <Pressable
             style={styles.contenedorSubmit}
              onPress={reiniciarCronometro}>
-            <Text style={styles.btnInferiores}>
+            <Text style={styles.txtInferiores}>
                     Reiniciar
                 </Text>
             </Pressable> 
@@ -345,7 +345,7 @@ const showAlert2 = () =>
                     /* ingresoDatos(); */
                     showAlert()
                 }}>
-                <Text style={styles.btnInferiores}>
+                <Text style={styles.txtInferiores}>
                     Enviar Datos
                 </Text>
             </Pressable>
@@ -379,20 +379,28 @@ const styles = StyleSheet.create({
         marginHorizontal:80,
         //fontFamily: 'Roboto'
     },
+    txtSuperior:{
+        textAlign: "center", 
+        fontSize:25, 
+        marginTop:10,
+        color: '#595858',
+        fontWeight: '600',
+        marginHorizontal:10,
+    },
     containerImg:{
         flexDirection: 'row',
-        marginHorizontal:10,
+        marginHorizontal:11,
         justifyContent:'space-around'
     },
     imagen: {
         width: 130,
-        height: 150,
+        height: 180,
         marginVertical: 30,
         objectFit: 'fill',
     },
     imagen2: {
         width: 130,
-        height: 150,
+        height: 180,
         //borderRadius: 20,
         marginVertical: 30,
         //transform:[{scaleX:-1}],
@@ -444,15 +452,17 @@ const styles = StyleSheet.create({
     },
     contenedorSubmit:{
         marginTop:20,
-        backgroundColor:'#e6e6fa',
-        marginHorizontal:120,
-        borderRadius: 20
-    },
-    btnInferiores:{
+        backgroundColor:'#6A71B9',
         textAlign:'center',
-        fontSize:20,
+        borderRadius:10,
+
+    },
+    txtInferiores:{
+        padding:10,
+        textAlign:'center',
+        fontSize:18,
         color:'#fff',
-        fontWeight:'800',
+        fontWeight:'600',
         padding:10
     }
 })

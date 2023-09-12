@@ -38,7 +38,7 @@ const Login2 = () => {
 
    const autenticacion = async () => {
     try {
-        const response = await axios.post("http://10.1.80.62/php/login.php", {
+        const response = await axios.post("http://10.1.80.37/php/login.php", {
             id: id,
             email: email,
             contrasena: contrasena
@@ -71,13 +71,17 @@ const Login2 = () => {
 const xx = useNavigation();
   return (
     <View style={styles.container}>
+        <Image
+        source= {require('../assets/imgHome/AmamantaLogo.png')}
+        style={styles.imgLogo}
+        />
         <Text style={styles.txtRegistarse}>Ingresa con tu cuenta o crea una nueva</Text>
         <View style={styles.containInputs}>
                 <Image
                 style={styles.iconos}
                 source={icoEmail}
                 />
-            <TextInput placeholder="orlan@gmail.com"
+            <TextInput placeholder="orlan@gmail.com / Email"
                 style={styles.inputs}
                 keyboardType="email-address"
                 onChangeText={(txtEscrito) => {setEmail(txtEscrito)}}
@@ -94,13 +98,13 @@ const xx = useNavigation();
             onChangeText={(txtEscrito) => {setContrasena(txtEscrito)}}
             />
         </View>
-        <View style={styles.containButton}>
+        <View >
             <TouchableOpacity style={styles.btnIngreso}
             onPress={() =>{
             autenticacion()
             setEnviar(true)
             }}
-            ><Text style={{color: 'white'}}>Ingresar</Text>
+            ><Text style={styles.txtInferior}>Ingresar</Text>
             </TouchableOpacity>
             
         </View>
@@ -109,7 +113,7 @@ const xx = useNavigation();
         <TouchableOpacity 
             onPress={() =>{xx.navigate("Registro")}}>
                 <Text style={[styles.btnEnlaces,{textDecorationLine: 'underline'}]}>Crear una cuenta</Text>
-            </TouchableOpacity>
+        </TouchableOpacity>
 
     </View>
   )
@@ -118,27 +122,33 @@ const xx = useNavigation();
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#f7e3e9',
+        backgroundColor: '#FFF0F7',
         padding: 20,
-        justifyContent: 'center',
+        // justifyContent: 'center',
         alignItems: 'center'
+    },
+    imgLogo:{
+         width:280,
+        height:200,
+        objectFit:'fill',
+        marginVertical:70 
     },
     txtRegistarse:{
         fontSize:30,
         textAlign: 'center',
-        color: '#584ba0',
+        color: '#6A71B9',
         fontWeight: 'bold',
-        marginBottom:15,
+        marginBottom:25,
         marginHorizontal:25
     },
     containInputs:{
         marginTop:10,
         marginBottom:7,
         marginHorizontal:50,
-        backgroundColor: '#dbb2bd',
+        backgroundColor: '#FAD2E0',
         padding:10,
         flexDirection:'row',
-        borderRadius:3
+        borderRadius:10
     },
     inputs:{
         marginLeft:10,
@@ -149,20 +159,25 @@ const styles = StyleSheet.create({
         height:20,
         
     },
-    containButton:{
-        justifyContent: 'center',
-    },
     btnIngreso:{
         marginTop:20,
-        padding:10,
-        backgroundColor:'#584ba0',
+        backgroundColor:'#6A71B9',
         textAlign:'center',
-        borderRadius:5
+        borderRadius:10,
+    },
+    txtInferior:{
+        padding:10,
+        textAlign:'center',
+        fontSize:18,
+        color:'#fff',
+        fontWeight:'600',
+        padding:10
     },
     btnEnlaces:{
         marginTop:40,
-        color:'#e67dba',
-        /*textDecorationColor: '#e67dba' */
+        color:'#FF7BAC',
+        fontWeight:'600'
+        /*textDecorationColor: '#FF7BAC' */
     },
 })
 
