@@ -261,7 +261,12 @@ const showAlert2 = () =>
                             style={styles.imagen}
                             source={imgSenoIzquier}
                         />
-                        <Text style={{textAlign: "center", fontSize:20, color:'#595858',fontWeight: '600',}}>IZQUIERDO</Text>
+                        <Text
+                        style={seno=='izquierdo' ?
+                         {textAlign: "center", fontSize:20, color:'#000',fontWeight: '600',} :
+                         {textAlign: "center", fontSize:20, color:'#c6bdbd',fontWeight: '600',}}
+                         >
+                            IZQUIERDO</Text>
                     </TouchableOpacity>
                 </View>
                 <View>
@@ -291,7 +296,12 @@ const showAlert2 = () =>
                             style={styles.imagen2}
                             source={imgSenoDerecho}
                         />
-                        <Text style={{textAlign: "center", fontSize:20, color:'#595858',fontWeight: '600',}}>DERECHO</Text>
+                        <Text
+                        style={seno=='derecho' ?
+                         {textAlign: "center", fontSize:20, color:'#000',fontWeight: '600',} :
+                         {textAlign: "center", fontSize:20, color:'#c6bdbd',fontWeight: '600',}}
+                        >
+                        DERECHO</Text>
                     </TouchableOpacity>
                 </View>
                 
