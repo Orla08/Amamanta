@@ -297,15 +297,11 @@ const showAlert2 = () =>
                 
                 
             </View>
-            
         </View>
-            <View style={styles.containerCuerpo}>
-            
-            <Text style={styles.Text}>{activo ?"Cronometro En Curso": "Conometro En Pausa "}</Text>
-            <Text style={styles.Text}>{activo ? "Lactando en seno "+seno : ""}</Text>
-            
-            
-            <View style={styles.containerCronometos}>
+            <View style={styles.containerCuerpo}>      
+            <Text style={styles.Text}>{activo ?"Cronometro En Curso": `Conometro${'\n'}En Pausa `}</Text>
+            <Text style={styles.Text}>{activo ? "Lactando en seno "+seno : ""}</Text>               
+            <View >
                 <View style={styles.contCards}>
                     {/* <Stopwatch
                     laps
@@ -325,9 +321,6 @@ const showAlert2 = () =>
                     <Text style={[{ fontSize: 40 }, {textAlign:'center'},{color:'#fff'}]}>
                         {tiempo}
                     </Text>
-                    
-                    
-                    
                 </View>
             </View>
         </View>
@@ -384,77 +377,77 @@ const styles = StyleSheet.create({
         fontSize:25, 
         marginTop:10,
         color: '#595858',
-        fontWeight: '600',
+        fontWeight: '700',
         marginHorizontal:10,
     },
     containerImg:{
         flexDirection: 'row',
-        marginHorizontal:11,
+        marginHorizontal:21,
         justifyContent:'space-around'
     },
     imagen: {
-        width: 130,
-        height: 180,
-        marginVertical: 30,
+        width: 120,
+        height: 190,
+        marginTop: 30,
+        marginBottom:5,
         objectFit: 'fill',
     },
     imagen2: {
-        width: 130,
-        height: 180,
-        //borderRadius: 20,
-        marginVertical: 30,
+        width: 120,
+        height: 190,
+        marginTop: 30,
+        marginBottom:5,
         //transform:[{scaleX:-1}],
         objectFit: 'fill',
     },
     Text:{
-        marginTop:10,
+        marginTop:15,
         fontSize: 20,
-        fontWeight: '600',
-        color: '#fff',
-        marginLeft:30,
+        fontWeight: '700',
+        color: '#595858',
+        textAlign: 'center'
         //fontFamily: 'Roboto'
     },
     text2:{
         fontSize:20,
-         color:'#fff',
-          textAlign:'center', marginBottom:5,
+        color:'#fff',
+        textAlign:'center',
+        marginBottom:5,
           //fontFamily: 'Roboto'
     },
     containerCuerpo:{
-        backgroundColor: '#e6e6fa',
-        marginTop:40
+        marginTop:60
     },
     contCards:{
-        marginVertical:15,
-        backgroundColor: '#b8b4d4ec',
+        marginBottom:5,
+        backgroundColor: '#6A71B9',
         borderRadius:10,
-        padding:20,
+        padding:15,
+        marginHorizontal:70
     },
-    stopwatchContainer:{
+    /* stopwatchContainer:{
         marginTop:10,
         marginHorizontal:40
-    }, 
+    },  
     stopwatchText:{
         color: '#fff',
         fontSize: 30
-    },
-    containerCronometos:{
-        marginHorizontal:70
-    },
-    buttonContainer:{
-        flexDirection:'row',
-        justifyContent: 'space-around'
     },
     iconos:{
         width:30,
         height:30,
         //color:'#41219f'  este debe ser el color del icono
+    },*/
+    buttonContainer:{
+        flexDirection:'row',
+        marginHorizontal:70
     },
     contenedorSubmit:{
         marginTop:20,
         backgroundColor:'#6A71B9',
         textAlign:'center',
         borderRadius:10,
+        marginHorizontal:8
 
     },
     txtInferiores:{
