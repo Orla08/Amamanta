@@ -308,9 +308,11 @@ const showAlert2 = () =>
                 
             </View>
         </View>
-            <View style={styles.containerCuerpo}>      
-            <Text style={styles.Text}>{activo ?"Cronometro En Curso": `Conometro${'\n'}En Pausa `}</Text>
-            <Text style={styles.Text}>{activo ? "Lactando en seno "+seno : ""}</Text>               
+            <View style={styles.containerCuerpo}>
+             <Text style={{marginBottom:5}}>
+                <Text style={styles.Text}>{activo ?`Cronometro En Curso ${'\n'}`: `Conometro${'\n'}En Pausa `}</Text>
+                <Text style={styles.Text}>{activo ? "Lactando en seno "+seno : ""}</Text>               
+            </Text>         
             <View >
                 <View style={styles.contCards}>
                     {/* <Stopwatch
@@ -397,14 +399,14 @@ const styles = StyleSheet.create({
     },
     imagen: {
         width: 120,
-        height: 190,
+        height: 220,
         marginTop: 30,
         marginBottom:5,
         objectFit: 'fill',
     },
     imagen2: {
         width: 120,
-        height: 190,
+        height: 220,
         marginTop: 30,
         marginBottom:5,
         //transform:[{scaleX:-1}],
@@ -426,14 +428,14 @@ const styles = StyleSheet.create({
           //fontFamily: 'Roboto'
     },
     containerCuerpo:{
-        marginTop:60
+        marginTop:50
     },
     contCards:{
         marginBottom:5,
         backgroundColor: '#6A71B9',
         borderRadius:10,
         padding:15,
-        marginHorizontal:70
+        marginHorizontal:73
     },
     /* stopwatchContainer:{
         marginTop:10,

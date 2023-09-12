@@ -153,10 +153,10 @@ export default function Home() {
                     </View>
                 </ScrollView>
                 <View style={styles.contenedorFila}>
-                    <AntDesign name="arrowleft" size={20} color='#fff'/>
+                <AntDesign name="left" size={20} color="#c6bdbd" />
                 </View> 
                 <View style={styles.contenedorFila2}>
-                    <AntDesign name="arrowright" size={20} color='#fff'/>
+                <AntDesign name="right" size={20} color='#c6bdbd'/>
                 </View>
                 
 
@@ -224,13 +224,13 @@ const styles = StyleSheet.create({
         position: 'absolute',
         left: 22,
         top: '50%',
-        transform: [{ translateY: -12 }],
+        transform: [{ translateY: -7 }],
     },
     contenedorFila2:{
         position: 'absolute',
         right: 22,
         top: '50%',
-        transform: [{ translateY: -12 }],
+        transform: [{ translateY: -7 }],
     },
     posicion: {
         flex: 1,
